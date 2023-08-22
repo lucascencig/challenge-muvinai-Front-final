@@ -1,8 +1,8 @@
 import React from 'react'
 import classnames from 'classnames'
-import { Link, useParams } from 'react-router-dom'
 
-const ButtonsUpdate = ({ onClick, estilos, modifier, text }) => {
+
+const ButtonDelete = ({ onClick, estilos, modifier, text }) => {
 
   const variants = {
     danger: 'bg-red-500 text-[#000000] font-bold p-2 rounded-md hover:bg-red-300',
@@ -11,7 +11,7 @@ const ButtonsUpdate = ({ onClick, estilos, modifier, text }) => {
   }
 
   const styleDiv = classnames('p-4 flex justify-center items-center ', estilos)
-  const stylesButton = classnames(variants.normal, estilos,
+  const stylesButton = classnames(variants.danger, estilos,
 
   )
   return (
@@ -25,4 +25,4 @@ const ButtonsUpdate = ({ onClick, estilos, modifier, text }) => {
   )
 }
 
-export default ButtonsUpdate
+export default ButtonDelete

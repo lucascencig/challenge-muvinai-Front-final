@@ -6,7 +6,7 @@ import classnames from 'classnames'
 export const ButtonFitMedical = ({ user, estilos, onClick }) => {
 
   const variants = {
-    blueForFitMedical: 'bg-sky-600 text-white font-bold p-2 rounded-md'
+    blueForFitMedical: 'bg-sky-600 text-white font-bold p-2 rounded-md hover:bg-sky-500'
   }
 
   const styleDiv = classnames('p-4 flex justify-center items-center ', estilos)

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { uploadFile } from '../../firebase/config'
 
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
@@ -7,12 +8,17 @@ import classnames from 'classnames'
 
 import NavAdmin from '../Admin/NavAdmin/NavAdmin';
 import noFoto from '../../assets/no-foto.png'
+
+import Swal from 'sweetalert2';
+
 const UpdateClient = ({ estilos }) => {
 
   const { id } = useParams();
 
   const [clientData, setClientData] = useState(null);
-  const [editedData, setEditedData] = useState({}); // Estado para los datos editados
+  const [editedData, setEditedData] = useState({});
+
+  const [profilePhoto, setProfilePhoto] = useState(null)
 
   useEffect(() => {
     async function getClientData() {
@@ -37,15 +43,36 @@ const UpdateClient = ({ estilos }) => {
   };
 
   // Manejador para guardar los cambios
-  const saveChanges = async () => {
+  const saveChanges = async (e) => {
+    e.preventDefault();
     try {
-      const response = await axios.put(`http://localhost:8000/clients/${id}`, editedData);
-      setClientData(response.data);
-      window.location.reload()
+      // Upload the profile photo if it's available
+      let newProfilePhotoUrl = editedData.profilePhotoUrl; // Keep the existing value
+
+      if (profilePhoto) {
+        const result = await uploadFile(profilePhoto);
+        newProfilePhotoUrl = result.url;
+      }
+
+      // Update the editedData with the new profilePhotoUrl
+      const updatedData = { ...editedData, profilePhotoUrl: newProfilePhotoUrl };
+
+      // Send a single PUT request to update the client data
+      const updatedResponse = await axios.put(`http://localhost:8000/clients/${id}`, updatedData);
+      setClientData(updatedResponse.data);
+
+      Swal.fire({
+        title: '¡Cambios guardados correctamente!',
+        icon: 'success',
+        confirmButtonText: 'Ok'
+      });
+
+      window.location.reload();
     } catch (error) {
       console.error("Error al guardar los cambios", error);
     }
   };
+
 
   const variants = {
 
@@ -65,9 +92,19 @@ const UpdateClient = ({ estilos }) => {
 
       <h2 className='text-center font-bold text-2xl pb-6 mt-4'>ACTUALIZAR CLIENTE</h2>
       {clientData && (
-        <div className='w-max h-auto p-4 flex justify-around items-center m-auto flex-row border-2 border-[#2cad84] rounded-md'>
+
+        <div div className='w-max h-auto p-4 flex justify-around items-center m-auto flex-row border-2 border-[#2cad84] rounded-md'>
           <div className='flex flex-col'>
-            <img className='w-48 h-48 rounded-md' src={noFoto} alt="foto de perfil" />
+            <img
+              className='w-48 h-48 rounded-md'
+              src={
+                profilePhoto
+
+                  ? URL.createObjectURL(profilePhoto)
+                  : clientData.profilePhotoUrl || noFoto
+              }
+              alt="foto de perfil"
+            />
             <p className='text-sm mt-2'>Id de cliente: {clientData._id}</p>
           </div>
           <div className='flex flex-col justify-center items-center text-start pl-4'>
@@ -81,10 +118,14 @@ const UpdateClient = ({ estilos }) => {
             <p>Plan activo: {clientData.Plan_activo}</p>
           </div>
         </div>
-      )}
+      )
+      }
       <section className='mt-8 flex justify-center items-center flex-col mb-6'>
         <h2 className='text-xl font-semibold mb-4'>Editar campos</h2>
-        <form className='flex flex-col space-y-4' action="">
+        <form className='flex flex-col space-y-4' >
+          <label >Foto de perfil
+            <input type="file" name="" id="" onChange={e => setProfilePhoto(e.target.files[0])} />
+          </label>
           <label className={labelStyle}> Nombre
             <input
               className={inputStyle}
@@ -171,7 +212,7 @@ const UpdateClient = ({ estilos }) => {
       </section>
 
 
-    </div>
+    </div >
 
 
   );

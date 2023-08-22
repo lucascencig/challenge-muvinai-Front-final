@@ -8,6 +8,7 @@ import AllClients from './components/Admin/AllClients/AllClients';
 import NewClient from './components/Admin/NewClient/NewClient';
 // import FitMedical from './components/Admin/FitMedical/FitMedical';
 import UpdateClient from './components/UpdateClient/UpdateClient';
+import DeleteClient from './components/Admin/DeleteClient/DeleteClient';
 
 
 import './index.css'
@@ -23,6 +24,8 @@ function App() {
         <Route exact path="/all-clients" element={<AllClients />} />
         <Route exact path="/new-client" element={<NewClient />} />
         <Route exact path="/clients/:id" element={<UpdateClient />} />
+        <Route exact path="/clients/del/:id" element={<DeleteClient />} />
+
 
 
 
