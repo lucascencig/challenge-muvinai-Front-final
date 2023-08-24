@@ -1,5 +1,5 @@
 import axios from 'axios'
-import classNames from 'classnames'
+import classnames from 'classnames'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import NavAdmin from '../NavAdmin/NavAdmin'

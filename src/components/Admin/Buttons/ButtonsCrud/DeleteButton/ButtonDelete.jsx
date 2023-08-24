@@ -11,9 +11,7 @@ const ButtonDelete = ({ onClick, estilos, modifier, text }) => {
   }
 
   const styleDiv = classnames('p-4 flex justify-center items-center ', estilos)
-  const stylesButton = classnames(variants.danger, estilos,
-
-  )
+  const stylesButton = classnames(variants.danger, estilos)
   return (
     <div className={styleDiv}>
 

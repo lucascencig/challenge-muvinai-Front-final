@@ -16,6 +16,9 @@ import WhatsAppButon from '../Buttons/WhatsAppButton/WhatsAppButon'
 import EmailButton from '../Buttons/EmailButton/EmailButton'
 import { uploadFile } from '../../../firebase/config'
 
+import PaysButton from '../Buttons/ButtonsCrud/PaysButton/PaysButton'
+
+
 const AllClients = () => {
 
 
@@ -88,6 +91,8 @@ const AllClients = () => {
                   <li className='list-none'>Plan activo: <span className='text-bold'>{e.Plan_activo}</span></li>
                   <li className='list-none'>Vigencia: <span className='text-bold'>{e.Vigencia_actual}</span></li>
                   <li className='list-none'>Proximo pago: <span className='text-bold'>{e.Fecha_proximo}</span></li>
+                  <li className='list-none'>Estado de pago: <span className='text-bold'>{e.isPay}</span></li>
+                  <li className='list-none'>Estado de cliente: <span className='text-bold'>{e.active_noActive}</span></li>
 
                   <ul className='flex p-2 gap-2'>
                     <li>
@@ -105,15 +110,24 @@ const AllClients = () => {
                   </ul>
 
                 </div>
-                <Link to={`/clients/${e._id}`}>
-                  <ButtonsUpdate text="Modificar Cliente" user={e} />
-                </Link>
 
-                <ButtonFitMedical onClick={() => handleSelectUser(e)} user={e} />
+                <div className='flex justify-center items-center flex-col'>
+                  <Link to={`/clients/${e._id}`}>
+                    <ButtonsUpdate text="Modificar Cliente" user={e} />
+                  </Link>
 
-                <Link to={`/clients/del/${e._id}`}>
-                  <ButtonDelete text="Dar de baja" user={e} />
-                </Link>
+                  <ButtonFitMedical onClick={() => handleSelectUser(e)} user={e} />
+
+                  <Link to={`/clients/del/${e._id}`}>
+                    <ButtonDelete text="Dar de baja" user={e} />
+                  </Link>
+
+                  <Link to={`/clients/pays/${e._id}`}>
+                    <PaysButton text="Ver historial de pagos" user={e} />
+                  </Link>
+                </div>
+
+
 
                 {selectedUser && selectedUser._id === e._id &&
 
