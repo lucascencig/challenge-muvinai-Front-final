@@ -82,25 +82,33 @@ export const Pays = ({ estilos }) => {
                       <td>$10500</td>
                       <td>{clientDataPays.credit_card} </td>
                       <td>{clientDataPays.type_of_pay}</td>
-                      <td>{clientDataPays.card_number}</td>
+                      <td>{clientDataPays.card_number ? `**** ${String(clientDataPays.card_number).substr(-4)}` : 'N/A'}</td>
                       {clientDataPays ?
                         (<>{clientDataPays.isPay === "Al dia" ? <td className='bg-green-600'>{clientDataPays.isPay}</td> : null}
                           {clientDataPays.isPay === "Atrasado" ? <td className='bg-slate-600'>{clientDataPays.isPay}</td> : null}
                           {clientDataPays.isPay === "Vencido" ? <td className='bg-red-600'>{clientDataPays.isPay}</td> : null}</>)
                         :
                         (
-                          <> </>
+                          <td> </td>
                         )
                       }
-                      {clientDataPays.isPay === "Vencido" ? <td className='bg-red-600'>Rechazo de pago</td> : <td></td>}
 
-                      <td>27/08/2023</td>
-                      <td>30/08/2023</td>
-                      <td>{clientDataPays.Plan_activo}</td>
-                      <td>23/10/2023</td>
                       {clientDataPays ?
-                        (<>{clientDataPays.active_noActive === "De Alta" ? <td className='bg-green-600'>{clientDataPays.active_noActive}</td> : null}
-                          {clientDataPays.active_noActive === "De Baja" ? <td className='bg-red-600'>{clientDataPays.active_noActive}</td> : null}
+                        (<>{clientDataPays.isPay === "Al dia" ? <td ></td> : null}
+                          {clientDataPays.isPay === "Atrasado" ? <td >Rechazo de pago</td> : null}
+                          {clientDataPays.isPay === "Vencido" ? <td>Rechazo de pago</td> : null}</>)
+                        :
+                        (
+                          <td> </td>
+                        )
+                      }
+                      <td>{new Date(new Date(clientDataPays.Alta).getTime() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]}</td>
+                      <td>{new Date(new Date(clientDataPays.Alta).getTime() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]}</td>
+                      <td>{clientDataPays.Plan_activo}</td>
+                      <td>{clientDataPays.Vigencia_actual}</td>
+                      {clientDataPays ?
+                        (<>{clientDataPays.active_noActive === "De alta" ? <td className='bg-green-600'>{clientDataPays.active_noActive}</td> : null}
+                          {clientDataPays.active_noActive === "De baja" ? <td className='bg-red-600'>{clientDataPays.active_noActive}</td> : null}
                         </>
                         )
                         :
@@ -108,8 +116,8 @@ export const Pays = ({ estilos }) => {
                           <></>
                         )
                       }
-                      <td></td>
-                      <td></td>
+
+
                     </tr>
                     <tr>
                       <td>Febrero</td>

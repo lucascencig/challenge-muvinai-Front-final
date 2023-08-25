@@ -5,7 +5,7 @@ import classnames from 'classnames'
 const ButtonDelete = ({ onClick, estilos, modifier, text }) => {
 
   const variants = {
-    danger: 'bg-red-500 text-[#000000] font-bold p-2 rounded-md hover:bg-red-300',
+    danger: 'bg-red-500 w-64 text-[#000000] font-bold p-2 rounded-md hover:bg-red-300',
     success: 'bg-[#c1f1e2] text-[#000000] font-bold p-2 rounded-md hover:bg-green-300',
     normal: 'bg-[#2cad84] text-[#000000] font-bold p-2 rounded-md border-2 hover:bg-[#6bdcb8] hover:text-white'
   }
