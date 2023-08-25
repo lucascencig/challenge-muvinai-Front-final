@@ -136,7 +136,7 @@ export const NewClient = ({ estilos }) => {
           </label>
           <label className={labelStyle}> Foto:
             <input
-              className='border-0 outline-none w-64 '
+              className="flex justify-center items-center border rounded-md py-2 px-4"
               type="file"
               name="profilePhotoUrl"
               placeholder="Nombre"
