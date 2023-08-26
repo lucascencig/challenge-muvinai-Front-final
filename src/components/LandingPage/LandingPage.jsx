@@ -38,32 +38,44 @@ const LandingPage = () => {
 
 
   return (
-    <div className='flex justify-center items-center'>
-      <form className={s.form}>
-        <div className={s.header}>Sign In</div>
-        <div className={s.inputs}>
-          <input placeholder="Email" value={email}
-            onChange={(e) => setEmail(e.target.value)} className={s.input} type="text" />
-          <input placeholder="Password" value={password}
-            onChange={(e) => setPassword(e.target.value)} className={s.input} type="password" />
-          <div className={s.checkbox_container}>
-            <label className={s.checkbox}>
-              <input type="checkbox" id="checkbox" />
-            </label>
-            <label for="checkbox" className={s.checkbox_text}>Remember me</label>
+    <div >
+      <div >
+
+
+
+        <div className={s.container}>
+
+          <div className={s.top_header}>
+            <h1 className='text-2xl font-bold'>Bienvenido</h1>
+            <p className='font-bold mb-4'>Inicia sesion para comenzar</p>
           </div>
+          <form className={s.form}>
+            <div className={s.header}>Ingresar</div>
+            <div className={s.inputs}>
+              <input placeholder="Email" value={email}
+                onChange={(e) => setEmail(e.target.value)} className={s.input} type="text" />
+              <input placeholder="Contraseña" value={password}
+                onChange={(e) => setPassword(e.target.value)} className={s.input} type="password" />
+              <div className={s.checkbox_container}>
+                <label className={s.checkbox}>
+                  <input type="checkbox" id="checkbox" />
+                </label>
+                <label for="checkbox" className={s.checkbox_text}>Recordarme</label>
+              </div>
 
 
-          <button onClick={handleLogin} className={s.sigin_btn}>Acceder al admin</button>
+              <button onClick={handleLogin} className={s.sigin_btn}>Acceder al admin</button>
 
-          <a className={s.forget} href="#">Forget password ?</a>
-          <p className={s.signup_link}>Don't have an account? <a href="#">Sign up</a></p>
+              <a className={s.forget} href="#">¿Olvidaste tu contraseña?</a>
+              <p className={s.signup_link}>¿No tienes cuenta? <a href="#">Registrarte</a></p>
+            </div>
+          </form>
+
+
+
+
         </div>
-      </form>
-
-
-
-
+      </div>
     </div>
   )
 }

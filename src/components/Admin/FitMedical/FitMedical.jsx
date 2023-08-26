@@ -46,7 +46,7 @@ const FitMedical = ({ user }) => {
             <button className='w-24 font-bold m-4 border-2  border-t-0  border-l-0  border-r-0 border-b-[#000000] hover:border-b-[#e58787] hover:text-[#e58787]' onClick={handleClose}>Cerrar</button>
           </div>
 
-          {/* Contenido del apto médico */}
+
         </div>
       ) : null}
     </div>

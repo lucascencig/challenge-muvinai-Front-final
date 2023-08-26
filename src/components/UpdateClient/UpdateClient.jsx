@@ -140,7 +140,7 @@ const UpdateClient = ({ estilos }) => {
   const variants = {
 
     inputs: 'w-64 font-bold border border-gray-300 px-4 py-2 rounded-md focus:outline-none focus:border-[#2cad84] focus:border-2',
-    button: 'w-64 bg-blue-500 text-white font-bold py-2 px-4 rounded-md hover:bg-blue-600',
+    button: 'w-64 bg-blue-500 text-white font-bold py-2 px-4 rounded-md hover:bg-blue-700 ease-in duration-100',
     labels: 'w-64 font-bold',
     id_style: 'text-sm font-bold mt-2',
     texts: 'font-bold'
@@ -155,11 +155,11 @@ const UpdateClient = ({ estilos }) => {
 
 
   return (
-    <div>
+    <div className='bg-[#ddf2ec] backdrop-blur-md'>
       <NavAdmin />
 
 
-      <h2 className='text-center font-bold text-2xl pb-6 mt-4'>ACTUALIZAR CLIENTE</h2>
+      <h2 className='text-center font-bold text-2xl pb-6 mt-4 '>ACTUALIZAR CLIENTE</h2>
 
       <div className='flex justify-around w-full'>
         <div className='w-2/4'>
@@ -190,6 +190,8 @@ const UpdateClient = ({ estilos }) => {
                 <p className={textsStyles}>Teléfono: {clientData.Telefono}</p>
                 <p className={textsStyles}>Alta el día: {clientData.Alta}</p>
                 <p className={textsStyles}>Plan activo: {clientData.Plan_activo}</p>
+                <p className={textsStyles}>Vigencia: {clientData.Vigencia_actual}</p>
+                <p className={textsStyles}>Proximo pago: {new Date(new Date(clientData.Alta).getTime() + 30 * 24 * 60 * 60 * 1000).toString().split('T')[0]}</p>
                 <p className={textsStyles}>Estado del pago: {clientData.isPay}</p>
                 <p className={textsStyles}>Estado del Cliente: {clientData.active_noActive}</p>
                 <p className={textsStyles}>Tipo de pago: {clientData.type_of_pay}</p>
@@ -329,52 +331,52 @@ const UpdateClient = ({ estilos }) => {
                 </div>
               </div>
 
-
-              <label className={labelStyle}>Seleccionar tipo de pago
-                <select className={inputStyle} onChange={handleInputChange} name="type_of_pay" id="">
-                  <option className="font-bold" value="" ></option>
-                  <option className="font-bold" value="Crédito">Crédito</option>
-                  <option className="font-bold" value="Débito">Débito</option>
-                  <option className="font-bold" value="Efectivo">Efectivo</option>
-                </select>
-              </label>
-
-
-              <label className={labelStyle}>Seleccionar tarjeta de credito
-                <select className={inputStyle} onChange={handleInputChange} name="credit_card" id="">
-                  <option className="font-bold" value="" ></option>
-                  <option className="font-bold" value="VISA">VISA</option>
-                  <option className="font-bold" value="MASTER">MASTERCARD</option>
-                  <option className="font-bold" value="OTRA">OTRA</option>
-                </select>
-              </label>
+              <div className='grid grid-cols-2 gap-4'>
+                <label className={labelStyle}>Seleccionar tipo de pago
+                  <select className={inputStyle} onChange={handleInputChange} name="type_of_pay" id="">
+                    <option className="font-bold" value="" ></option>
+                    <option className="font-bold" value="Crédito">Crédito</option>
+                    <option className="font-bold" value="Débito">Débito</option>
+                    <option className="font-bold" value="Efectivo">Efectivo</option>
+                  </select>
+                </label>
 
 
-              <div >
-                {fechasCalculadas.fecha90 && (
-                  <p className='font-bold text-xl'>3 meses al 50% hasta: {fechasCalculadas.fecha90}</p>
-                )}
-                {fechasCalculadas.fecha150 && (
-                  <p className='font-bold text-xl'>5 meses al 50% hasta: {fechasCalculadas.fecha150}</p>
-                )}
-              </div>
+                <label className={labelStyle}>Seleccionar tarjeta de credito
+                  <select className={inputStyle} onChange={handleInputChange} name="credit_card" id="">
+                    <option className="font-bold" value="" ></option>
+                    <option className="font-bold" value="VISA">VISA</option>
+                    <option className="font-bold" value="MASTER">MASTERCARD</option>
+                    <option className="font-bold" value="OTRA">OTRA</option>
+                  </select>
+                </label>
 
-              <div className='font-bold flex flex-col gap-2 '>
-                <label lassName={labelStyle}>
-                  <input type="number" placeholder='Numero de tarjeta' className={inputStyle} onChange={handleInputChange} name='card_number' />
+
+                <div >
+                  {fechasCalculadas.fecha90 && (
+                    <p className='font-bold text-xl'>3 meses al 50% hasta: {fechasCalculadas.fecha90}</p>
+                  )}
+                  {fechasCalculadas.fecha150 && (
+                    <p className='font-bold text-xl'>5 meses al 50% hasta: {fechasCalculadas.fecha150}</p>
+                  )}
+                </div>
+
+                <div className='font-bold flex flex-col gap-2 '>
+                  <label lassName={labelStyle}>
+                    <input type="number" placeholder='Numero de tarjeta' className={inputStyle} onChange={handleInputChange} name='card_number' />
+                  </label>
+                </div>
+
+
+                <label className={labelStyle}>Seleccionar Estado de pago
+                  <select className={inputStyle} onChange={handleInputChange} name="isPay" id="">
+                    <option className="font-bold" value="" ></option>
+                    <option className="font-bold" value="Al dia">Al día</option>
+                    <option className="font-bold" value="Atrasado">Atrasado</option>
+                    <option className="font-bold" value="Vencido">Vencido</option>
+                  </select>
                 </label>
               </div>
-
-
-              <label className={labelStyle}>Seleccionar Estado de pago
-                <select className={inputStyle} onChange={handleInputChange} name="isPay" id="">
-                  <option className="font-bold" value="" ></option>
-                  <option className="font-bold" value="Al dia">Al día</option>
-                  <option className="font-bold" value="Atrasado">Atrasado</option>
-                  <option className="font-bold" value="Vencido">Vencido</option>
-                </select>
-              </label>
-
 
 
 

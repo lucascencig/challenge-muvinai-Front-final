@@ -7,7 +7,7 @@ const EmailButton = ({ estilos }) => {
 
   const variants = {
 
-    email: 'w-12 h-12 bg-[#F84437] rounded-md flex items-center justify-center shadow-md hover:bg-red-600',
+    email: 'w-12 h-12 bg-[#F84437] rounded-md flex items-center justify-center shadow-md hover:bg-red-600 ease-in duration-100',
     icon: 'text-white text-xl',
 
   }

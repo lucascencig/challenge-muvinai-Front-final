@@ -4,7 +4,7 @@ import classnames from 'classnames'
 
 const PaysButton = ({ text, estilos, onClick }) => {
   const variants = {
-    normal: 'bg-[#2cad84] w-64 text-[#000000] font-bold p-2 rounded-md border-2 hover:bg-[#6bdcb8] hover:text-white'
+    normal: 'bg-[#2cad84] flex justify-center items-center w-12 h-12 text-2xl  text-center text-[#ffffff] font-bold rounded-md  hover:bg-[#0c8d64] hover:text-white ease-in duration-100'
   }
 
   const stylesButton = classnames(variants.normal, estilos)

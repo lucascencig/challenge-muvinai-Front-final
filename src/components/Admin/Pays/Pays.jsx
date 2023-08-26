@@ -102,8 +102,8 @@ export const Pays = ({ estilos }) => {
                           <td> </td>
                         )
                       }
-                      <td>{new Date(new Date(clientDataPays.Alta).getTime() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]}</td>
-                      <td>{new Date(new Date(clientDataPays.Alta).getTime() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]}</td>
+                      <td>{new Date(new Date(clientDataPays.Alta).getTime() + 30 * 24 * 60 * 60 * 1000).toString().split('T')[0]}</td>
+                      <td>{new Date(new Date(clientDataPays.Alta).getTime() + 30 * 24 * 60 * 60 * 1000).toString().split('T')[0]}</td>
                       <td>{clientDataPays.Plan_activo}</td>
                       <td>{clientDataPays.Vigencia_actual}</td>
                       {clientDataPays ?

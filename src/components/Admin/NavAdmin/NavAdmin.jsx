@@ -16,7 +16,7 @@ const NavAdmin = () => {
   return (
     <div>
       <main className='bg-[#2cad84]'>
-        <h1>ADMIN</h1>
+
 
         <div className='flex justify-center items-center'>
           <ul className='flex flex-row'>
