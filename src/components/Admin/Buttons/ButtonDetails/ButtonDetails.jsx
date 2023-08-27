@@ -1,20 +1,23 @@
 import React from 'react'
 import classnames from 'classnames'
 
+import { HiOutlineInformationCircle } from 'react-icons/Hi'
+
 const ButtonDetails = ({ user, estilos, onClick }) => {
   const variants = {
-    blueForFitMedical: 'bg-sky-600 w-48 h-12 text-white font-bold p-2 rounded-md hover:bg-sky-700 ease-in duration-100'
+    buttonDetail: 'bg-[#5F8D4E] flex justify-center items-center w-12 h-12 text-2xl  text-center text-[#ffffff] font-bold rounded-md  hover:bg-[#285430] hover:text-white ease-in duration-100'
   }
 
+
   const styleDiv = classnames('p-4 flex justify-center items-center ', estilos)
-  const stylesButton = classnames(variants['blueForFitMedical'], estilos)
+  const stylesButton = classnames(variants['buttonDetail'], estilos)
 
 
 
   return (
     <div className={styleDiv}>
 
-      <button className={stylesButton} user={user} onClick={onClick}>Detalles</button>
+      <button className={stylesButton} user={user} onClick={onClick}><HiOutlineInformationCircle /></button>
 
 
     </div>

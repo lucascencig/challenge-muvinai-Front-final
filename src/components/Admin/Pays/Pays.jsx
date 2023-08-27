@@ -28,9 +28,9 @@ export const Pays = ({ estilos }) => {
   }, [id]);
 
   const variants = {
-    table: 'bg-[#c1f1e2] text-[#000000] font-bold p-4 w-full ',
-    cels: 'bg-[#c1f1e2] text-[#000000] font-bold',
-    row: 'bg-[#2cad84] text-[#ffffff] font-bold p-4  w-fll '
+    table: 'bg-[#FAFAFA] text-[#000000] font-bold p-4 w-10/12 m-auto shadow-md',
+    cels: 'bg-[#FAFAFA] text-[#000000] font-bold ',
+    row: 'bg-[#5F8D4E] text-[#ffffff] font-bold p-4 w-fll '
   }
 
   const styleTable = classnames(variants.table, estilos)
@@ -42,12 +42,12 @@ export const Pays = ({ estilos }) => {
       <NavAdmin />
       {
         clientDataPays ?
-          (<div>
+          (<div className='bg-[#FAFAFA] h-screen '>
             <h2 className='font-bold text-center text-xl p-6'>
               Historial de pagos de {clientDataPays.Nombre}
             </h2>
 
-            <div className='flex justify-center items-center text-center  border-2  border-[#2cad84]'>
+            <div className='flex justify-center items-center text-center'>
               <div>
                 <table className={styleTable}>
                   <colgroup className={styleCels}>

@@ -7,8 +7,8 @@ const WhatsAppButon = ({ estilos }) => {
 
   const variants = {
 
-    wsp: 'w-12 h-12 bg-[#00c307] rounded-md flex items-center justify-center shadow-md hover:bg-green-600 ease-in duration-100',
-    icon: 'text-white text-xl',
+    wsp: 'w-16 h-16 bg-[#00c307] rounded-full flex items-center justify-center shadow-md hover:bg-green-600 ease-in duration-100',
+    icon: 'text-white text-3xl',
 
   }
 

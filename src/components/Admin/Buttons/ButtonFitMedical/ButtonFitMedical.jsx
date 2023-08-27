@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 
 import classnames from 'classnames'
-
+import { FaNotesMedical } from 'react-icons/Fa'
 
 export const ButtonFitMedical = ({ user, estilos, onClick }) => {
 
   const variants = {
-    blueForFitMedical: 'bg-sky-600 w-48 h-12 text-white font-bold p-2 rounded-md hover:bg-sky-700 ease-in duration-100'
+    blueForFitMedical: 'bg-[#5F8D4E] flex justify-center items-center w-12 h-12 text-2xl  text-center text-[#ffffff] font-bold rounded-md  hover:bg-[#285430] hover:text-white ease-in duration-100'
   }
 
   const styleDiv = classnames('p-4 flex justify-center items-center ', estilos)
@@ -17,7 +17,7 @@ export const ButtonFitMedical = ({ user, estilos, onClick }) => {
   return (
     <div className={styleDiv}>
 
-      <button className={stylesButton} user={user} onClick={onClick}>Apto Médico</button>
+      <button className={stylesButton} user={user} onClick={onClick}><FaNotesMedical /></button>
 
     </div>
   )

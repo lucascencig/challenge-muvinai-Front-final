@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 
 
 //ESTILOS:
+import '../../index.css'
 import s from '../LandingPage/LandingPage.module.css'
 import Swal from 'sweetalert2'
 
@@ -46,8 +47,8 @@ const LandingPage = () => {
         <div className={s.container}>
 
           <div className={s.top_header}>
-            <h1 className='text-2xl font-bold'>Bienvenido</h1>
-            <p className='font-bold mb-4'>Inicia sesion para comenzar</p>
+            <h1 className='text-2xl font-bold text-[#fff]'>Bienvenido</h1>
+            <p className='font-bold mb-4 text-[#fff]'>Inicia sesion para comenzar</p>
           </div>
           <form className={s.form}>
             <div className={s.header}>Ingresar</div>

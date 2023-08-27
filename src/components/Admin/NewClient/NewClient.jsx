@@ -79,9 +79,10 @@ export const NewClient = ({ estilos }) => {
 
   const variants = {
 
-    inputs: 'w-64 border text-[#000000] font-bold border-gray-300 px-4 py-2 rounded-md focus:outline-none focus:border-blue-500',
-    button: 'w-64 bg-blue-500 text-white font-bold py-2 px-4 rounded-md hover:bg-blue-600',
-    labels: 'w-64 font-bold text-white',
+    inputs: 'w-64 border text-[#000000] font-bold border-gray-200 px-4 py-2 rounded-md focus:outline-none focus:border-blue-500',
+    button: 'w-64 bg-[#5F8D4E] text-white font-bold py-2 px-4 rounded-md hover:bg-[#285430] ease-in-out duration-100',
+    labels: 'w-64 font-bold text-[#000]',
+    labelCCard: 'w-64 font-bold  -mt-6 text-[#000]',
     inputDisabled: 'w-64 border text-white bg-slate-600 px-4 py-2 rounded-md focus:outline-none focus:border-blue-500 hidden',
     labelNone: 'w-64 font-bold hidden',
     optionsText: 'font-bold'
@@ -90,6 +91,7 @@ export const NewClient = ({ estilos }) => {
   const inputStyle = classnames(variants['inputs'], estilos)
   const buttonStyle = classnames(variants['button'], estilos)
   const labelStyle = classnames(variants['labels'], estilos)
+  const labelCCardStyle = classnames(variants['labelCCard'], estilos)
   const inputDisabledStyle = classnames(variants['inputDisabled'], estilos)
   const labelNoneStyle = classnames(variants['labelNone'], estilos)
   const optionsTextStyle = classnames(variants['optionsText'], estilos)
@@ -114,14 +116,14 @@ export const NewClient = ({ estilos }) => {
 
 
   return (
-    <div>
+    <div className='bg-[#FAFAFA] h-screen'>
 
       <NavAdmin />
 
+      <h1 className='text-center font-bold text-2xl  mt-4 mb-0'>NUEVO CLIENTE</h1>
+      <div className=' p-4 w-10/12 flex justify-center items-center flex-col m-auto mt-4 rounded-md'>
 
-      <h1 className='text-center font-bold text-2xl pb-6 mt-4 mb-0'>NEW CLIENT</h1>
-      <section className=' flex justify-center items-center flex-col'>
-        <form className='flex flex-col justify-center items-center space-y-4 w-2/5 bg-[#2cad84] rounded-md p-4' action="">
+        <form className='flex flex-col justify-center items-center space-y-10 w-10/12 bg-[#fff] rounded-md p-4 shadow-md' action="">
 
           <label className={labelNoneStyle}>Estado del cliente:
             <input
@@ -134,9 +136,10 @@ export const NewClient = ({ estilos }) => {
               disabled
             />
           </label>
+
           <label className={labelStyle}> Foto:
             <input
-              className="flex justify-center items-center border rounded-md py-2 px-4"
+              className="flex justify-center w-64 h-12 items-center border rounded-md py-2 px-4"
               type="file"
               name="profilePhotoUrl"
               placeholder="Nombre"
@@ -145,6 +148,8 @@ export const NewClient = ({ estilos }) => {
           </label>
 
           <div className='flex gap-2'>
+
+
             <label className={labelStyle}> Nombre:
               <input
                 className={inputStyle}
@@ -164,9 +169,6 @@ export const NewClient = ({ estilos }) => {
                 onChange={handleChange}
               />
             </label>
-          </div>
-
-          <div className='flex flex-wrap gap-2 justify-center items-center'>
             <label className={labelStyle}> Fecha de nacimiento:
               <input
                 className={inputStyle}
@@ -176,6 +178,10 @@ export const NewClient = ({ estilos }) => {
                 onChange={handleChange}
               />
             </label>
+          </div>
+
+          <div className='flex  gap-2 justify-center items-center'>
+
 
             <label className={labelStyle}> DNI:
               <input
@@ -208,7 +214,7 @@ export const NewClient = ({ estilos }) => {
             </label>
           </div>
 
-          <div className='flex flex-wrap gap-2 justify-center items-center'>
+          <div className='flex gap-2 justify-center items-center'>
             <label className={labelStyle}>Fecha de alta:
               <input
                 className={inputStyle}
@@ -246,7 +252,11 @@ export const NewClient = ({ estilos }) => {
               </select>
             </label>
 
-            <label className={labelStyle}>Seleccionar tarjeta de credito
+          </div>
+
+
+          <div className='flex gap-2 mt-8 justify-center items-center'>
+            <label className={labelCCardStyle}>Seleccionar tarjeta de credito
               <select className={inputStyle} placeholder='Tarjeta de credito' onChange={handleChange} name="credit_card" id="">
                 <option value="" ></option>
                 <option className={optionsTextStyle} value="VISA">VISA</option>
@@ -254,17 +264,6 @@ export const NewClient = ({ estilos }) => {
                 <option className={optionsTextStyle} value="OTRA">OTRA</option>
               </select>
             </label>
-          </div>
-          <div >
-            {fechasCalculadas.fecha90 && (
-              <p className='font-bold text-xl'>3 meses al 50% hasta: {fechasCalculadas.fecha90}</p>
-            )}
-            {fechasCalculadas.fecha150 && (
-              <p className='font-bold text-xl'>5 meses al 50% hasta: {fechasCalculadas.fecha150}</p>
-            )}
-          </div>
-
-          <div className='font-bold flex flex-col '>
             <label lassName={labelStyle}>
               <input
                 type="number"
@@ -273,17 +272,29 @@ export const NewClient = ({ estilos }) => {
                 name='card_number'
                 placeholder='Numero de tarjeta' />
             </label>
+
+
+            <button
+              className={buttonStyle}
+              onClick={handleSubmit}
+            >
+              Guardar Cambios
+            </button>
           </div>
 
-
-          <button
-            className={buttonStyle}
-            onClick={handleSubmit}
-          >
-            Guardar Cambios
-          </button>
+          <div >
+            {fechasCalculadas.fecha90 && (
+              <p className='font-bold text-xl'>3 meses al 50% hasta: {fechasCalculadas.fecha90}</p>
+            )}
+            {fechasCalculadas.fecha150 && (
+              <p className='font-bold text-xl'>5 meses al 50% hasta: {fechasCalculadas.fecha150}</p>
+            )}
+          </div>
         </form>
-      </section>
+
+
+      </div>
+
     </div>
   )
 }
