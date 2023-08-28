@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
-import s from '../UpdateState/UpdateState.module.css'
 
+// STYLES:
+import s from '../UpdateState/UpdateState.module.css'
 
 const UpdateState = ({ altaOBaja, handleAltaOBaja }) => {
   const [altaobaja, setaltaobaja] = useState(false)
-  const handleToggle = () => {
-    handleAltaOBaja(!altaOBaja); // Toggle between alta and baja
-    setaltaobaja(!altaOBaja)
-    console.log(altaOBaja)
 
+  const handleToggle = () => {
+    handleAltaOBaja(!altaOBaja);
+    setaltaobaja(!altaOBaja)
   };
 
   return (
@@ -19,12 +19,10 @@ const UpdateState = ({ altaOBaja, handleAltaOBaja }) => {
         id="bauble_check"
         name="bauble"
         type="checkbox"
-        checked={altaOBaja} // Bind the checked value to the state
-        onChange={handleToggle} // Handle checkbox change
+        checked={altaOBaja}
+        onChange={handleToggle}
       />
-      <label className={s.bauble_label} htmlFor="bauble_check">
-        Toggle
-      </label>
+      <label className={s.bauble_label} htmlFor="bauble_check">Cambiar</label>
     </div>
   );
 };

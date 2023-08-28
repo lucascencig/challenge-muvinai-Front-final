@@ -1,25 +1,23 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+
+// COMPONENTS:
 import NavAdmin from '../NavAdmin/NavAdmin';
 
+// STYLES:
 import '../../../index.css'
 import classnames from 'classnames'
-import s from '../../Admin/Pays/Pays.module.css'
-
 
 export const Pays = ({ estilos }) => {
   const { id } = useParams();
   const [clientDataPays, setClientDataPays] = useState(null);
-
 
   useEffect(() => {
     async function getClientData() {
       try {
         const response = await axios.get(`http://localhost:8000/clients/${id}`);
         setClientDataPays(response.data);
-        console.log(response.data)
-
       } catch (error) {
         console.error("Error al obtener los datos del cliente", error);
       }
@@ -32,7 +30,6 @@ export const Pays = ({ estilos }) => {
     cels: 'bg-[#FAFAFA] text-[#000000] font-bold ',
     row: 'bg-[#5F8D4E] text-[#ffffff] font-bold p-4 w-fll '
   }
-
   const styleTable = classnames(variants.table, estilos)
   const styleCels = classnames(variants.cels, estilos)
   const styleRow = classnames(variants.row, estilos)
@@ -46,7 +43,6 @@ export const Pays = ({ estilos }) => {
             <h2 className='font-bold text-center text-xl p-6'>
               Historial de pagos de {clientDataPays.Nombre}
             </h2>
-
             <div className='flex justify-center items-center text-center'>
               <div>
                 <table className={styleTable}>
@@ -57,7 +53,6 @@ export const Pays = ({ estilos }) => {
                     <col />
                     <col />
                     <col />
-
                   </colgroup>
                   <thead className={styleRow}>
                     <tr>
@@ -73,7 +68,6 @@ export const Pays = ({ estilos }) => {
                       <th>Descuento actual</th>
                       <th>Vencimiento del descuento:</th>
                       <th>Estado del cliente</th>
-
                     </tr>
                   </thead>
                   <tbody>
@@ -92,7 +86,6 @@ export const Pays = ({ estilos }) => {
                           <td> </td>
                         )
                       }
-
                       {clientDataPays ?
                         (<>{clientDataPays.isPay === "Al dia" ? <td ></td> : null}
                           {clientDataPays.isPay === "Atrasado" ? <td >Rechazo de pago</td> : null}
@@ -116,8 +109,6 @@ export const Pays = ({ estilos }) => {
                           <></>
                         )
                       }
-
-
                     </tr>
                     <tr>
                       <td>Febrero</td>
@@ -274,14 +265,11 @@ export const Pays = ({ estilos }) => {
                       <td></td>
                     </tr>
                   </tbody>
-
                 </table>
               </div>
             </div>
-
           </div>
           )
-
           :
           null
       }

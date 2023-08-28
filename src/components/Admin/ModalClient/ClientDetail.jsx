@@ -1,10 +1,14 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import noFoto from '../../../../assets/no-foto.png';
 import { useParams } from 'react-router-dom';
+import axios from 'axios';
+
+// COMPONENTS:
+import WhatsAppButon from '../Buttons/WhatsAppButton/WhatsAppButon';
+import EmailButton from '../Buttons/EmailButton/EmailButton';
+import noFoto from '../../../assets/no-foto.png';
+
+// ICONS:
 import { ImCross } from 'react-icons/Im'
-import WhatsAppButon from '../../Buttons/WhatsAppButton/WhatsAppButon';
-import EmailButton from '../../Buttons/EmailButton/EmailButton';
 
 const ClientDetail = ({ user }) => {
   const { id } = useParams();
@@ -16,7 +20,6 @@ const ClientDetail = ({ user }) => {
       try {
         const response = await axios.get(`http://localhost:8000/clients/${id}`);
         setClientDetail(response.data);
-        console.log(response.data)
       } catch (error) {
         console.error("Error al obtener los datos del cliente", error);
       }
@@ -37,7 +40,6 @@ const ClientDetail = ({ user }) => {
             <div className='flex flex-col justify-center items-center text-justify p-4 '>
               <div className="flex flex-col   rounded-md">
                 <div className=' float-right'>
-
                   <button className='flex justify-center items-center font-bold  float-right' onClick={handleClose}><ImCross className='border-1 border-[#000] bg-[#ffffff0] w-10 h-10 p-2  rounded-md text-red-500 text-2xl mt-4 mb-2 flex justify-center items-center hover:text-red-700 hover:bg-[#ffffff40] hover:rounded-full ease-in-out duration-200' /></button>
                 </div>
                 <div className="flex flex-col md:flex-row gap-6 p-6 bg-white rounded-md  shadow-md">
@@ -94,7 +96,6 @@ const ClientDetail = ({ user }) => {
                         <p className="text-bold">Estado de cliente:</p>
                         <p className="text-gray-500 text-lg">{user.active_noActive}</p>
                       </div>
-
                       <div className='flex justify-center items-center m-auto gap-4 mr-0'>
                         <a href={`https://api.whatsapp.com/send?phone=${user.Telefono}&text=Hola%20,Este%20mensaje%20es%20del%20gimnasio.%20%20Recuerda%20venir%20este%20mes`}>
                           <WhatsAppButon />
@@ -106,21 +107,13 @@ const ClientDetail = ({ user }) => {
                     </div>
                   </div>
                 </div>
-
-
-
-
               </div>
-
-
-
             </div>
           </div>
         ) : null}
       </div>) :
         null
       }
-
     </div>
   );
 };

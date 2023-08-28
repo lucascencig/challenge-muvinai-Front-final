@@ -1,22 +1,25 @@
 import React, { useEffect, useState } from 'react'
-import NavAdmin from '../../NavAdmin/NavAdmin'
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
+
+// COMPONENTS:
+import NavAdmin from '../../NavAdmin/NavAdmin'
+import aptoMedico from '../../../../assets/aptoMedico.jpg'
+
+// STYLES:
 import classnames from 'classnames'
 import '../../../../index.css'
 
-const FitMedicalData = () => {
+
+const FitMedicalData = ({ user }) => {
   const { id } = useParams();
   const [fitMedicalClient, setFitMedicalClient] = useState()
-
 
   useEffect(() => {
     async function getClientData() {
       try {
         const response = await axios.get(`http://localhost:8000/clients/${id}`);
         setFitMedicalClient(response.data);
-        console.log(response.data)
-
       } catch (error) {
         console.error("Error al obtener los datos del cliente", error);
       }
@@ -24,54 +27,32 @@ const FitMedicalData = () => {
     getClientData();
   }, [id]);
 
-  const variants = {
-
-    inputs: 'w-64 border border-gray-300 px-4 py-2 rounded-md focus:outline-none focus:border-[#2cad84] focus:border-2',
-    button: 'w-64 bg-[#2cad84] text-white font-bold py-2 px-4 rounded-md hover:bg-[#6bdcb8]',
-    labels: 'w-64 font-bold',
-    id_style: 'text-sm font-bold mt-2',
-    texts: 'font-bold'
-  }
-
-  const inputStyle = classnames(variants['inputs'])
-  const buttonStyle = classnames(variants['button'])
-  const labelStyle = classnames(variants['labels'])
-  const idStyle = classnames(variants['id_style'])
-  const textsStyles = classnames(variants['texts'])
-
-
   return (
-    <div>
+    <div >
       <NavAdmin />
       {fitMedicalClient ?
-        <div>
-          <h2>Apto medico de {fitMedicalClient.Nombre}</h2>
-
-          <div className='flex flex-col justify-center items-center text-start pl-4'>
-            {/* <h2 className={textsStyles}>Nombre: {clientData.Nombre}</h2>
-            <h3 className={textsStyles}>Apellido: {clientData.Apellido}</h3>
-            <p className={textsStyles}>Fecha de Nacimiento: {clientData.Nacimiento}</p>
-            <p className={textsStyles}>DNI: {clientData.DNI}</p>
-            <p className={textsStyles}>Email: {clientData.Email}</p>
-            <p className={textsStyles}>Teléfono: {clientData.Telefono}</p>
-            <p className={textsStyles}>Alta el día: {clientData.Alta}</p>
-            <p className={textsStyles}>Plan activo: {clientData.Plan_activo}</p>
-            <p className={textsStyles}>Estado del pago: {clientData.isPay}</p>
-            <p className={textsStyles}>Estado del Cliente: {clientData.active_noActive}</p>
-            <p className={textsStyles}>Tipo de pago: {clientData.type_of_pay}</p>
-            <p className={textsStyles}>Tipo de tarjeta: {clientData.credit_card}</p>
-            <p className={textsStyles}>Numero de tarjeta: {clientData.card_number ? `**** **** **** ${String(clientData.card_number).substr(-4)}` : 'N/A'}</p> */}
+        <div className=' bg-[#fafafa] h-screen'>
+          <div className='pt-4'>
+            <Link to={'/all-clients'}>
+              <button className='flex justify-center items-center m-auto  rounded-md bg-[#5F8D4E] w-20  h-12 text-center text-[#fff] flex justify-center items-center font-bold hover:bg-[#285430] ease-in-out duration-100'>Atras</button>
+            </Link>
+            <div>
+              <h2 className='flex justify-center items-center m-auto flex-col mt-4 mb-4 text-xl font-bold'>Apto medico del cliente</h2>
+            </div>
           </div>
-          <div>
-            Aprobar apto medico:
-
-            <select>
+          <div className='bg-[#fff] w-10/12 flex justify-center items-center flex-col m-auto mt-4 rounded-md shadow-md'>
+            <div className='flex flex-col justify-center items-center m-auto text-center pl-4'>
+              <img className='rounded-lg mb-10' src={aptoMedico} alt="apto-medico" />
+            </div>
+          </div>
+          <div className='bg-[#FAFAFA] flex justify-center items-center m-auto w-9/12 h-24 text-center pl-4 mt-4 '>
+            <h2 className='text-xl font-bold'>Aprobar apto medico:</h2>
+            <select className='ml-4 '>
               <option value="ok">Aprobado</option>
               <option value="notOk">Desaprobado</option>
             </select>
           </div>
         </div>
-
         :
         null
       }

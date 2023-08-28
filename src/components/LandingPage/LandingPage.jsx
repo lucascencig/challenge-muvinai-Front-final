@@ -1,54 +1,57 @@
 import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
+// COMPONENTS:
+import Swal from 'sweetalert2'
 
-//ESTILOS:
+//STYLES:
 import '../../index.css'
 import s from '../LandingPage/LandingPage.module.css'
-import Swal from 'sweetalert2'
 
 const LandingPage = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-
   const handleLogin = () => {
-    // Predefined email and password to validate
     const validEmail = 'admin@admin.com';
     const validPassword = 'admin';
+    const recepEmail = 'carla@recepcionista.com';
+    const recepPassword = "recepcionista";
 
-    if (email === validEmail && password === validPassword) {
-      // Save email to localStorage if valid
-      localStorage.setItem('adminEmail', email);
-      // Redirect to admin page or perform any other action
-      navigate('/admin')
-      // For now, let's simulate a navigation by logging to the console
-      console.log('Logged in successfully');
-    } else {
-      // Show error message or take appropriate action
+    if (!email || !password) {
       Swal.fire({
-        title: '¡Credenciales incorrectas!',
+        title: 'Campos incompletos',
+        text: 'Por favor, ingresa un email y una contraseña válidos.',
         icon: 'error',
-        confirmButtonText: 'Ok'
-      }).then(
-        navigate('/')
-      )
+        confirmButtonText: 'Ok',
+      });
+      return;
+    }
+
+    if ((email === validEmail && password === validPassword) || (email === recepEmail && password === recepPassword)) {
+      localStorage.setItem('adminEmail', email);
+      navigate('/admin');
+    } else {
+      Swal.fire({
+        title: 'Credenciales inválidas',
+        text: 'El email y/o la contraseña son incorrectos.',
+        icon: 'error',
+        confirmButtonText: 'Ok',
+      });
     }
   };
 
 
+
+
   return (
-    <div >
-      <div >
-
-
-
+    <div>
+      <div>
         <div className={s.container}>
-
           <div className={s.top_header}>
-            <h1 className='text-2xl font-bold text-[#fff]'>Bienvenido</h1>
-            <p className='font-bold mb-4 text-[#fff]'>Inicia sesion para comenzar</p>
+            <h1 className='text-5xl  font-bold text-[#fff]'>Bienvenido</h1>
+            <p className='font-bold mb-4 text-[#fff] text-4xl'>Inicia sesion para comenzar</p>
           </div>
           <form className={s.form}>
             <div className={s.header}>Ingresar</div>
@@ -63,18 +66,11 @@ const LandingPage = () => {
                 </label>
                 <label for="checkbox" className={s.checkbox_text}>Recordarme</label>
               </div>
-
-
               <button onClick={handleLogin} className={s.sigin_btn}>Acceder al admin</button>
-
               <a className={s.forget} href="#">¿Olvidaste tu contraseña?</a>
               <p className={s.signup_link}>¿No tienes cuenta? <a href="#">Registrarte</a></p>
             </div>
           </form>
-
-
-
-
         </div>
       </div>
     </div>

@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import NavAdmin from '../../NavAdmin/NavAdmin';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import classnames from 'classnames';
 
+// COMPONENTS:
+import NavAdmin from '../../NavAdmin/NavAdmin';
+
+// STYLES:
+import classnames from 'classnames';
 import '../../../../index.css';
 
 const FitMedicalUpload = ({ estilos }) => {
@@ -15,7 +18,6 @@ const FitMedicalUpload = ({ estilos }) => {
       try {
         const response = await axios.get(`http://localhost:8000/clients/${id}`);
         setFitMedicalClient(response.data);
-        console.log(response.data);
       } catch (error) {
         console.error("Error al obtener los datos del cliente", error);
       }
@@ -30,12 +32,9 @@ const FitMedicalUpload = ({ estilos }) => {
     id_style: 'text-sm font-bold mt-2',
     texts: 'font-bold'
   };
-
-  const inputStyle = classnames(variants['inputs'], estilos);
   const buttonStyle = classnames(variants['button'], estilos);
   const labelStyle = classnames(variants['labels'], estilos);
   const idStyle = classnames(variants['id_style'], estilos);
-  const textsStyles = classnames(variants['texts'], estilos);
 
   return (
     <div>
@@ -43,9 +42,7 @@ const FitMedicalUpload = ({ estilos }) => {
       {fitMedicalClient ? (
         <div>
           <h2>Subir apto medico para {fitMedicalClient.Nombre} {fitMedicalClient.Apellido}</h2>
-
           <p className={idStyle}>ID del cliente: {id}</p>
-
           <div>
             <form action="">
               <label className={labelStyle}> Foto:
@@ -54,7 +51,6 @@ const FitMedicalUpload = ({ estilos }) => {
                   type="file"
                   name="Apto_medico"
                   placeholder="Nombre"
-                // onChange={handleChange}
                 />
               </label>
               <button className={buttonStyle}>Subir apto médico</button>

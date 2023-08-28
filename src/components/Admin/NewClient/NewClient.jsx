@@ -1,14 +1,13 @@
 import React, { useState } from 'react'
-import classnames from 'classnames'
+import axios from 'axios'
 
 // COMPONENTS:
 import NavAdmin from '../NavAdmin/NavAdmin'
-
+import Swal from 'sweetalert2'
 
 // Estilos:
+import classnames from 'classnames'
 import '../../../index.css'
-import axios from 'axios'
-import Swal from 'sweetalert2'
 
 export const NewClient = ({ estilos }) => {
   const [formData, setFormData] = useState({
@@ -35,14 +34,11 @@ export const NewClient = ({ estilos }) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value, Vigencia_actual: fechasCalculadas.fecha90 || fechasCalculadas.fecha150 });
-
   };
 
   const handlePlanChange = (e) => {
     handleChange(e);
-
     const { name, value } = e.target;
-
     if (value === "3 meses al 50%") {
       calcularFechasOffset(formData.Alta, 90);
     } else if (value === "5 meses al 50%") {
@@ -57,11 +53,9 @@ export const NewClient = ({ estilos }) => {
 
   const calcularFechasOffset = (fechaSeleccionada, dias) => {
     const fechaInicio = new Date(fechaSeleccionada);
-
     if (!isNaN(fechaInicio)) { // Comprobamos si fechaInicio es una fecha válida
       const fechaCalculada = new Date(fechaInicio);
       fechaCalculada.setDate(fechaInicio.getDate() + dias);
-
       setFechasCalculadas({
         fecha90: dias === 90 ? fechaCalculada.toISOString().split("T")[0] : "",
         fecha150: dias === 150 ? fechaCalculada.toISOString().split("T")[0] : ""
@@ -75,10 +69,7 @@ export const NewClient = ({ estilos }) => {
     }
   };
 
-
-
   const variants = {
-
     inputs: 'w-64 border text-[#000000] font-bold border-gray-200 px-4 py-2 rounded-md focus:outline-none focus:border-blue-500',
     button: 'w-64 bg-[#5F8D4E] text-white font-bold py-2 px-4 rounded-md hover:bg-[#285430] ease-in-out duration-100',
     labels: 'w-64 font-bold text-[#000]',
@@ -87,7 +78,6 @@ export const NewClient = ({ estilos }) => {
     labelNone: 'w-64 font-bold hidden',
     optionsText: 'font-bold'
   }
-
   const inputStyle = classnames(variants['inputs'], estilos)
   const buttonStyle = classnames(variants['button'], estilos)
   const labelStyle = classnames(variants['labels'], estilos)
@@ -95,7 +85,6 @@ export const NewClient = ({ estilos }) => {
   const inputDisabledStyle = classnames(variants['inputDisabled'], estilos)
   const labelNoneStyle = classnames(variants['labelNone'], estilos)
   const optionsTextStyle = classnames(variants['optionsText'], estilos)
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -113,30 +102,25 @@ export const NewClient = ({ estilos }) => {
       });
   };
 
-
-
   return (
     <div className='bg-[#FAFAFA] h-screen'>
-
       <NavAdmin />
-
-      <h1 className='text-center font-bold text-2xl  mt-4 mb-0'>NUEVO CLIENTE</h1>
       <div className=' p-4 w-10/12 flex justify-center items-center flex-col m-auto mt-4 rounded-md'>
-
+        <div className='w-10/12'>
+          <h2 className='font-bold ml-2 text-xl float-left mb-8'>Nuevo cliente:</h2>
+        </div>
         <form className='flex flex-col justify-center items-center space-y-10 w-10/12 bg-[#fff] rounded-md p-4 shadow-md' action="">
-
           <label className={labelNoneStyle}>Estado del cliente:
             <input
               className={inputDisabledStyle}
               type="text"
               name="active_noActive"
-              value={formData.isPay} // Establecer el valor predeterminado
-              readOnly // Hacer que el campo sea de solo lectura
+              value={formData.isPay}
+              readOnly
               onChange={handleChange}
               disabled
             />
           </label>
-
           <label className={labelStyle}> Foto:
             <input
               className="flex justify-center w-64 h-12 items-center border rounded-md py-2 px-4"
@@ -146,10 +130,7 @@ export const NewClient = ({ estilos }) => {
               onChange={handleChange}
             />
           </label>
-
           <div className='flex gap-2'>
-
-
             <label className={labelStyle}> Nombre:
               <input
                 className={inputStyle}
@@ -159,7 +140,6 @@ export const NewClient = ({ estilos }) => {
                 onChange={handleChange}
               />
             </label>
-
             <label className={labelStyle}> Apellido:
               <input
                 className={inputStyle}
@@ -179,10 +159,7 @@ export const NewClient = ({ estilos }) => {
               />
             </label>
           </div>
-
           <div className='flex  gap-2 justify-center items-center'>
-
-
             <label className={labelStyle}> DNI:
               <input
                 className={inputStyle}
@@ -192,7 +169,6 @@ export const NewClient = ({ estilos }) => {
                 onChange={handleChange}
               />
             </label>
-
             <label className={labelStyle}> Email:
               <input
                 className={inputStyle}
@@ -202,7 +178,6 @@ export const NewClient = ({ estilos }) => {
                 onChange={handleChange}
               />
             </label>
-
             <label className={labelStyle}> Teléfono:
               <input
                 className={inputStyle}
@@ -213,7 +188,6 @@ export const NewClient = ({ estilos }) => {
               />
             </label>
           </div>
-
           <div className='flex gap-2 justify-center items-center'>
             <label className={labelStyle}>Fecha de alta:
               <input
@@ -224,7 +198,6 @@ export const NewClient = ({ estilos }) => {
                 onChange={handleChange}
               />
             </label>
-
             <label className={labelStyle}>Plan
               <select
                 className={inputStyle}
@@ -237,12 +210,6 @@ export const NewClient = ({ estilos }) => {
                 <option className={optionsTextStyle} value="5 meses al 50%">5 meses al 50%</option>
               </select>
             </label>
-
-            {/* Mostrar las fechas calculadas */}
-
-
-
-
             <label className={labelStyle}>Seleccionar tipo de pago
               <select className={inputStyle} onChange={handleChange} name="type_of_pay" id="">
                 <option value="" ></option>
@@ -251,10 +218,7 @@ export const NewClient = ({ estilos }) => {
                 <option className={optionsTextStyle} value="OTRA">Efectivo</option>
               </select>
             </label>
-
           </div>
-
-
           <div className='flex gap-2 mt-8 justify-center items-center'>
             <label className={labelCCardStyle}>Seleccionar tarjeta de credito
               <select className={inputStyle} placeholder='Tarjeta de credito' onChange={handleChange} name="credit_card" id="">
@@ -272,8 +236,6 @@ export const NewClient = ({ estilos }) => {
                 name='card_number'
                 placeholder='Numero de tarjeta' />
             </label>
-
-
             <button
               className={buttonStyle}
               onClick={handleSubmit}
@@ -281,7 +243,6 @@ export const NewClient = ({ estilos }) => {
               Guardar Cambios
             </button>
           </div>
-
           <div >
             {fechasCalculadas.fecha90 && (
               <p className='font-bold text-xl'>3 meses al 50% hasta: {fechasCalculadas.fecha90}</p>
@@ -291,10 +252,7 @@ export const NewClient = ({ estilos }) => {
             )}
           </div>
         </form>
-
-
       </div>
-
     </div>
   )
 }

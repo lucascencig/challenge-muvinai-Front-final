@@ -1,44 +1,34 @@
 import React, { useEffect, useState } from 'react'
-import { uploadFile } from '../../firebase/config'
-
 import { useParams } from 'react-router-dom'
+import { uploadFile } from '../../../firebase/config'
 import axios from 'axios'
-import classnames from 'classnames'
 
-
-import NavAdmin from '../Admin/NavAdmin/NavAdmin';
-import UpdateState from '../Admin/Buttons/UpdateState/UpdateState'
-import noFoto from '../../assets/no-foto.png'
-import s from '../Admin/Buttons/UpdateState/UpdateState.module.css'
-
+// COMPONENTS:
+import NavAdmin from '../NavAdmin/NavAdmin';
+import noFoto from '../../../assets/no-foto.png'
 import Swal from 'sweetalert2';
 
+// STYLES:
+import classnames from 'classnames'
+
 const UpdateClient = ({ estilos }) => {
-
   const { id } = useParams();
-
   const [clientData, setClientData] = useState(null);
   const [editedData, setEditedData] = useState({});
-
   const [profilePhoto, setProfilePhoto] = useState(null)
-
   const [clientState, setClientState] = useState(false)
-
   const [altaOBaja, setAltaOBaja] = useState(false);
 
-
-
   const handleAltaOBajaChange = () => {
-    setAltaOBaja(!altaOBaja); // Toggle between alta and baja
+    setAltaOBaja(!altaOBaja);
   };
 
   useEffect(() => {
     async function getClientData() {
       try {
         const response = await axios.get(`http://localhost:8000/clients/${id}`);
-        console.log(response)
         setClientData(response.data);
-        setEditedData(response.data); // Inicializa los datos editados con los datos actuales
+        setEditedData(response.data);
       } catch (error) {
         console.error("Error al obtener los datos del cliente", error);
       }
@@ -46,9 +36,6 @@ const UpdateClient = ({ estilos }) => {
     getClientData();
   }, [id]);
 
-
-
-  // Manejador para los cambios en los campos editables
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setEditedData((prevData) => ({
@@ -57,28 +44,17 @@ const UpdateClient = ({ estilos }) => {
     }));
   };
 
-
-
-
-  // Manejador para guardar los cambios
   const saveChanges = async (e) => {
     e.preventDefault();
     try {
-      // Upload the profile photo if it's available
-      let newProfilePhotoUrl = editedData.profilePhotoUrl; // Keep the existing value
-
+      let newProfilePhotoUrl = editedData.profilePhotoUrl;
       if (profilePhoto) {
         const result = await uploadFile(profilePhoto);
         newProfilePhotoUrl = result.url;
       }
-
-      // Update the editedData with the new profilePhotoUrl
       const updatedData = { ...editedData, profilePhotoUrl: newProfilePhotoUrl };
-
-      // Send a single PUT request to update the client data
       const updatedResponse = await axios.put(`http://localhost:8000/clients/${id}`, updatedData);
       setClientData(updatedResponse.data);
-
       Swal.fire({
         title: '¡Cambios guardados correctamente!',
         icon: 'success',
@@ -86,8 +62,6 @@ const UpdateClient = ({ estilos }) => {
       }).then(
         window.localStorage.getItem('adminEmail')
       );
-
-
       window.location.reload();
     } catch (error) {
       console.error("Error al guardar los cambios", error);
@@ -96,9 +70,7 @@ const UpdateClient = ({ estilos }) => {
 
   const handlePlanChange = (e) => {
     handleInputChange(e);
-
     const { name, value } = e.target;
-
     if (value === "3 meses al 50%") {
       calcularFechasOffset(editedData.Alta, 90);
     } else if (value === "5 meses al 50%") {
@@ -113,11 +85,9 @@ const UpdateClient = ({ estilos }) => {
 
   const calcularFechasOffset = (fechaSeleccionada, dias) => {
     const fechaInicio = new Date(fechaSeleccionada);
-
     if (!isNaN(fechaInicio)) { // Comprobamos si fechaInicio es una fecha válida
       const fechaCalculada = new Date(fechaInicio);
       fechaCalculada.setDate(fechaInicio.getDate() + dias);
-
       setFechasCalculadas({
         fecha90: dias === 90 ? fechaCalculada.toISOString().split("T")[0] : "",
         fecha150: dias === 150 ? fechaCalculada.toISOString().split("T")[0] : ""
@@ -131,42 +101,33 @@ const UpdateClient = ({ estilos }) => {
     }
   };
 
-
   const [fechasCalculadas, setFechasCalculadas] = useState({
     fecha90: "",
     fecha150: ""
   });
 
   const variants = {
-
     inputs: 'w-64 font-bold border border-gray-300 px-4 py-2 rounded-md focus:outline-none focus:border-[#2cad84] focus:border-2',
     button: 'w-64 bg-[#5F8D4E] text-white font-bold py-2 px-4 rounded-md hover:bg-[#285430] ease-in duration-100',
     labels: 'w-64 font-bold',
     id_style: 'text-sm font-bold mt-2',
     texts: 'font-bold'
   }
-
   const inputStyle = classnames(variants['inputs'], estilos)
   const buttonStyle = classnames(variants['button'], estilos)
   const labelStyle = classnames(variants['labels'], estilos)
   const idStyle = classnames(variants['id_style'], estilos)
   const textsStyles = classnames(variants['texts'], estilos)
 
-
-
   return (
     <div className='bg-[#FAFAFA] '>
       <NavAdmin />
-
       <div className='h-screen'>
-
         <h2 className='text-center font-bold text-2xl pb-6 mt-4 '>ACTUALIZAR CLIENTE</h2>
-
         <div className='flex justify-around w-10/12 h-auto bg-[#fff] items-center m-auto shadow-md p-4 '>
           <div className='w-2/4'>
             <h4 className='text-center font-bold text-lg pb-6 mt-4'>Ultima vez modificado por: <p>{window.localStorage.getItem('adminEmail')}</p></h4>
             {clientData && (
-
               <div className="w-10/12 text-[#68686c]  bg-[#FAFAFA] h-auto rounded-md shadow-md bg-white flex justify-between flex-col items-center m-auto space-x-2">
                 <div className="flex flex-col items-center">
                   <img
@@ -205,17 +166,15 @@ const UpdateClient = ({ estilos }) => {
                   </p>
                 </div>
               </div>
-
             )
             }
           </div>
-
           <div className='w-10/12'>
             <section className='mt-8 flex justify-center items-center flex-col mb-6'>
               <h2 className='text-xl font-semibold mb-4'>Editar campos</h2>
-              <form className='flex flex-col justify-center items-center space-y-2 bg-[#fff]  w-10/12 rounded-md p-8 shadow-md' >
+              <form className='flex flex-col justify-center items-center space-y-2 bg-[#fff] text-[#000]  w-10/12 rounded-md p-8 shadow-md' >
                 <div className="flex flex-col ">
-                  <label className="text-white">Foto de perfil</label>
+                  <label className="text-[#c9c9c9]">Foto de perfil</label>
                   <input
                     type="file"
                     name=""
@@ -225,7 +184,7 @@ const UpdateClient = ({ estilos }) => {
                   />
                 </div>
                 <div className="flex flex-col">
-                  <label className="text-white">Seleccionar Estado de cliente</label>
+                  <label className="text-[#c9c9c9]">Seleccionar Estado de cliente</label>
                   <select
                     className="border rounded-md py-2 px-4"
                     onChange={handleInputChange}
@@ -239,7 +198,7 @@ const UpdateClient = ({ estilos }) => {
                 </div>
                 <div className="flex gap-4">
                   <div className="flex flex-col">
-                    <label className="text-white">Nombre</label>
+                    <label className="text-[#000000]">Nombre</label>
                     <input
                       className={inputStyle}
                       type="text"
@@ -250,7 +209,7 @@ const UpdateClient = ({ estilos }) => {
                     />
                   </div>
                   <div className="flex flex-col">
-                    <label className="text-white">Apellido</label>
+                    <label className="text-[#000000]">Apellido</label>
                     <input
                       className={inputStyle}
                       type="text"
@@ -261,7 +220,7 @@ const UpdateClient = ({ estilos }) => {
                     />
                   </div>
                   <div className="flex flex-col">
-                    <label className="text-white">Fecha de nacimiento</label>
+                    <label className="text-[#000000]">Fecha de nacimiento</label>
                     <input
                       className={inputStyle}
                       type="date"
@@ -274,7 +233,7 @@ const UpdateClient = ({ estilos }) => {
                 </div>
                 <div className="flex gap-4">
                   <div className="flex flex-col">
-                    <label className="text-white">DNI</label>
+                    <label className="text-[#000000]">DNI</label>
                     <input
                       className={inputStyle}
                       type="text"
@@ -284,7 +243,7 @@ const UpdateClient = ({ estilos }) => {
                     />
                   </div>
                   <div className="flex flex-col">
-                    <label className="text-white">Email</label>
+                    <label className="text-[#000000]">Email</label>
                     <input
                       className={inputStyle}
                       type="text"
@@ -294,7 +253,7 @@ const UpdateClient = ({ estilos }) => {
                     />
                   </div>
                   <div className="flex flex-col">
-                    <label className="text-white">Teléfono</label>
+                    <label className="text-[#000000]">Teléfono</label>
                     <input
                       className={inputStyle}
                       type="text"
@@ -306,7 +265,7 @@ const UpdateClient = ({ estilos }) => {
                 </div>
                 <div className="flex gap-4">
                   <div className="flex flex-col">
-                    <label className="text-white">Fecha de alta</label>
+                    <label className="text-[#000000]">Fecha de alta</label>
                     <input
                       className={inputStyle}
                       type="date"
@@ -316,7 +275,7 @@ const UpdateClient = ({ estilos }) => {
                     />
                   </div>
                   <div className="flex flex-col">
-                    <label className="text-white">Plan</label>
+                    <label className="text-[#000000]">Plan</label>
                     <select
                       className={inputStyle}
                       onChange={handlePlanChange}
@@ -338,7 +297,6 @@ const UpdateClient = ({ estilos }) => {
                   </label>
                 </div>
                 <div className="flex gap-4">
-
                   <label className={labelStyle}>Seleccionar tarjeta de credito
                     <select className={inputStyle} onChange={handleInputChange} name="credit_card" id="">
                       <option className="font-bold" value="" ></option>
@@ -347,14 +305,11 @@ const UpdateClient = ({ estilos }) => {
                       <option className="font-bold" value="OTRA">OTRA</option>
                     </select>
                   </label>
-
                   <div className='font-bold flex flex-col gap-2 '>
                     <label className={labelStyle}>
                       <input type="number" placeholder='Numero de tarjeta' className='w-64 font-bold border border-gray-300 px-4 py-2 mt-6 rounded-md focus:outline-none focus:border-[#2cad84] focus:border-2' onChange={handleInputChange} name='card_number' />
                     </label>
                   </div>
-
-
                   <label className={labelStyle}>Seleccionar Estado de pago
                     <select className={inputStyle} onChange={handleInputChange} name="isPay" id="">
                       <option className="font-bold" value="" ></option>
@@ -364,10 +319,7 @@ const UpdateClient = ({ estilos }) => {
                     </select>
                   </label>
                 </div>
-
                 <div className='flex gap-4'>
-
-
                   <dir className='mt-4'>
                     <button
                       className={buttonStyle}
@@ -376,9 +328,7 @@ const UpdateClient = ({ estilos }) => {
                       Guardar Cambios
                     </button>
                   </dir>
-
-
-                  <div >
+                  <div className='mt-6'>
                     {fechasCalculadas.fecha90 && (
                       <p className='font-bold text-xl'>3 meses al 50% hasta: {fechasCalculadas.fecha90}</p>
                     )}
@@ -386,24 +336,12 @@ const UpdateClient = ({ estilos }) => {
                       <p className='font-bold text-xl'>5 meses al 50% hasta: {fechasCalculadas.fecha150}</p>
                     )}
                   </div>
-
-
-
-
                 </div>
-
-
-
-
-
-
               </form>
             </section>
           </div>
-
-        </div >
-      </div >
-
+        </div>
+      </div>
     </div>
   );
 };
