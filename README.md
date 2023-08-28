@@ -1,4 +1,4 @@
-# challenge-muvinai-Front
+# challenge-muvinai-Front / desarrollado por Lucas Cencig.
 
 Este es un proyecto de prueba técnica de Front-End para "Muvinai".
 Creado con:
