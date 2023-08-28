@@ -12,6 +12,28 @@ import Swal from 'sweetalert2';
 import classnames from 'classnames'
 
 const UpdateClient = ({ estilos }) => {
+  const [users, setUsers] = useState([
+    {
+      _id: '1',
+      Nombre: 'John',
+      Apellido: 'Doe',
+      Plan_activo: '3 meses al 50%',
+      DNI: '32132654',
+      Telefono: 1512345678,
+      Alta: '24/08/2023',
+      Nacimiento: '02/03/1990',
+      Vigencia_actual: '2023-11-23',
+      Fecha_proximo: '24/09/2023',
+      isPay: 'Al dia',
+      active_noActive: 'De alta',
+      type_of_pay: 'Crédito',
+      credit_card: 'MASTER',
+      card_number: 4546123456784641,
+      Apto_medico: '',
+      Email: 'john@example.com',
+      profilePhotos: '',
+    },
+  ])
   const { id } = useParams();
   const [clientData, setClientData] = useState(null);
   const [editedData, setEditedData] = useState({});
@@ -22,6 +44,7 @@ const UpdateClient = ({ estilos }) => {
   const handleAltaOBajaChange = () => {
     setAltaOBaja(!altaOBaja);
   };
+
 
   useEffect(() => {
     async function getClientData() {
@@ -127,7 +150,7 @@ const UpdateClient = ({ estilos }) => {
         <div className='flex justify-around w-10/12 h-auto bg-[#fff] items-center m-auto shadow-md p-4 '>
           <div className='w-2/4'>
             <h4 className='text-center font-bold text-lg pb-6 mt-4'>Ultima vez modificado por: <p>{window.localStorage.getItem('adminEmail')}</p></h4>
-            {clientData && (
+            {clientData ? (
               <div className="w-10/12 text-[#68686c]  bg-[#FAFAFA] h-auto rounded-md shadow-md bg-white flex justify-between flex-col items-center m-auto space-x-2">
                 <div className="flex flex-col items-center">
                   <img
@@ -167,6 +190,48 @@ const UpdateClient = ({ estilos }) => {
                 </div>
               </div>
             )
+              :
+              users ?
+                (<div className="w-10/12 text-[#68686c]  bg-[#FAFAFA] h-auto rounded-md shadow-md bg-white flex justify-between flex-col items-center m-auto space-x-2">
+                  <div className="flex flex-col items-center">
+                    <img
+                      className="w-32 h-32 p-2 rounded-full"
+                      src={
+                        profilePhoto
+                          ? URL.createObjectURL(profilePhoto)
+                          : users.profilePhotoUrl || noFoto
+                      }
+                      alt="foto de perfil"
+                    />
+                    <div className="flex flex-col w-full  justify-center items-center p-4 ">
+                      <p className={idStyle}>Id de cliente: {users._id}</p>
+                    </div>
+                  </div>
+                  <div className="flex flex-col flex-grow justify-center text-start pl-4">
+                    <h2 className={textsStyles}>Nombre: {users.Nombre}</h2>
+                    <h3 className={textsStyles}>Apellido: {users.Apellido}</h3>
+                    <p className={textsStyles}>Fecha de Nacimiento: {users.Nacimiento}</p>
+                    <p className={textsStyles}>DNI: {users.DNI}</p>
+                    <p className={textsStyles}>Email: {users.Email}</p>
+                    <p className={textsStyles}>Teléfono: {users.Telefono}</p>
+                    <p className={textsStyles}>Alta el día: {users.Alta}</p>
+                    <p className={textsStyles}>Plan activo: {users.Plan_activo}</p>
+                    <p className={textsStyles}>Vigencia: {users.Vigencia_actual}</p>
+                    <p className={textsStyles}>Proximo pago: {new Date(new Date(users.Alta).getTime() + 30 * 24 * 60 * 60 * 1000).toString().split('T')[0]}</p>
+                    <p className={textsStyles}>Estado del pago: {users.isPay}</p>
+                    <p className={textsStyles}>Estado del Cliente: {users.active_noActive}</p>
+                    <p className={textsStyles}>Tipo de pago: {users.type_of_pay}</p>
+                    <p className={textsStyles}>Tipo de tarjeta: {users.credit_card}</p>
+                    <p className={textsStyles}>
+                      Numero de tarjeta:{' '}
+                      {users.card_number
+                        ? `**** **** **** ${String(users.card_number).substr(-4)}`
+                        : 'N/A'}
+                    </p>
+                  </div>
+                </div>)
+                :
+                null
             }
           </div>
           <div className='w-10/12'>

@@ -10,6 +10,7 @@ import FitMedical from '../FitMedical/FitMedical'
 import PaysButton from '../Buttons/ButtonsCrud/PaysButton/PaysButton'
 import ClientDetail from '../ModalClient/ClientDetail'
 import ButtonDetails from '../Buttons/ButtonDetails/ButtonDetails'
+import Pagination from '../Pagination/Pagination'
 
 // STYLES: 
 import noFoto from '../../../assets/no-foto.png'
@@ -26,6 +27,19 @@ const AllClients = () => {
       _id: '1',
       Nombre: 'John',
       Apellido: 'Doe',
+      Plan_activo: '3 meses al 50%',
+      DNI: '32132654',
+      Telefono: 1512345678,
+      Alta: '24/08/2023',
+      Nacimiento: '02/03/1990',
+      Vigencia_actual: '2023-11-23',
+      Fecha_proximo: '24/09/2023',
+      isPay: 'Al dia',
+      active_noActive: 'De alta',
+      type_of_pay: 'Crédito',
+      credit_card: 'MASTER',
+      card_number: 4546123456784641,
+      Apto_medico: '',
       Email: 'john@example.com',
       profilePhotos: '',
     },
@@ -55,6 +69,41 @@ const AllClients = () => {
       Nombre: 'Fernando',
       Apellido: 'Doe',
       Email: 'fernando@example.com',
+      profilePhotos: '',
+    },
+    {
+      _id: '6',
+      Nombre: 'Sebastian',
+      Apellido: 'Doe',
+      Email: 'sebastian@example.com',
+      profilePhotos: '',
+    },
+    {
+      _id: '7',
+      Nombre: 'Maria',
+      Apellido: 'Doe',
+      Email: 'maria@example.com',
+      profilePhotos: '',
+    },
+    {
+      _id: '8',
+      Nombre: 'Adriana',
+      Apellido: 'Doe',
+      Email: 'adriana@example.com',
+      profilePhotos: '',
+    },
+    {
+      _id: '9',
+      Nombre: 'Celeste',
+      Apellido: 'Doe',
+      Email: 'celeste@example.com',
+      profilePhotos: '',
+    },
+    {
+      _id: '10',
+      Nombre: 'Juan',
+      Apellido: 'Doe',
+      Email: 'juan@example.com',
       profilePhotos: '',
     },
   ]);
@@ -110,7 +159,8 @@ const AllClients = () => {
               <ButtonNewClient />
             </div>
           </div>
-          <div className='bg-[#ebeaea] text-[#B5B5C3]  mt-4 list-none flex flex-row justify-between items-center m-auto w-10/12 gap-2 bg-white p-4 rounded-md font-bold text-lg'>
+          <Pagination />
+          <div className='bg-[#e1e1e1] text-[#B5B5C3]  mt-4 list-none flex flex-row justify-between items-center m-auto w-10/12 gap-2 bg-white p-4 rounded-md font-bold text-lg'>
             <li className='pl-4'>Nombre y apellido</li>
             <li></li>
             <li></li>
@@ -185,6 +235,8 @@ const AllClients = () => {
           )}
         </div>
       </div>
+      <Pagination />
+
     </div>
   );
 };

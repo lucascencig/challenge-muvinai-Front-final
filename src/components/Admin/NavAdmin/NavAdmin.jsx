@@ -18,7 +18,7 @@ const NavAdmin = () => {
   }
   return (
     <div>
-      <main className='bg-gradient-to-r from-[#5F8D4E] to-[#285430]  w-full h-24 flex justify-between'>
+      <main className='bg-gradient-to-r from-[#5F8D4E] to-[#285430] w-full h-24 flex justify-between '>
         <img src={logo} alt="logo" className='w-24 h-24 rounded-full mt-0 ml-10' />
         <div className='flex justify-center items-center ml-10 w-2/5 float-center m-auto'>
           <ul className='flex flex-row text-[#fff]'>
