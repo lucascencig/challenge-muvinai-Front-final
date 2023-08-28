@@ -3,9 +3,9 @@
 Este es un proyecto de prueba técnica de Front-End para "Muvinai".
 Creado con:
 
-# React + Vite (Front-end)
+# React + Vite + Tailwind css + Firebase + SweetAlert2 + React-Icons. (Front-end)
 
-# NodeJs + MongoDb. (Back-end)
+# NodeJs + Express + Nodemon + Mongoose + MongoDb. (Back-end)
 
 # ACLARACIÓN:
 
