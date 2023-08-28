@@ -26,9 +26,9 @@ export const Pays = ({ estilos }) => {
   }, [id]);
 
   const variants = {
-    table: 'bg-[#FAFAFA] text-[#000000] font-bold p-4 w-10/12 m-auto shadow-md',
+    table: 'bg-[#FAFAFA] text-[#000000] border-2 font-bold p-4 w-10/12 m-auto shadow-md',
     cels: 'bg-[#FAFAFA] text-[#000000] font-bold ',
-    row: 'bg-[#5F8D4E] text-[#ffffff] font-bold p-4 w-fll '
+    row: 'bg-[#5F8D4E] border-2 text-[#ffffff] font-bold p-4 w-fll '
   }
   const styleTable = classnames(variants.table, estilos)
   const styleCels = classnames(variants.cels, estilos)
@@ -40,7 +40,7 @@ export const Pays = ({ estilos }) => {
       {
         clientDataPays ?
           (<div className='bg-[#FAFAFA] h-screen '>
-            <h2 className='font-bold text-center text-xl p-6'>
+            <h2 className='font-bold ml-56 text-xl p-6'>
               Historial de pagos de {clientDataPays.Nombre}
             </h2>
             <div className='flex justify-center items-center text-center'>
@@ -111,7 +111,7 @@ export const Pays = ({ estilos }) => {
                       }
                     </tr>
                     <tr>
-                      <td>Febrero</td>
+                      <td className={styleCels}>Febrero</td>
                       <td></td>
                       <td></td>
                       <td></td>
@@ -125,7 +125,7 @@ export const Pays = ({ estilos }) => {
                       <td></td>
                     </tr>
                     <tr>
-                      <td>Marzo</td>
+                      <td className={styleCels}>Marzo</td>
                       <td></td>
                       <td></td>
                       <td></td>
@@ -139,7 +139,7 @@ export const Pays = ({ estilos }) => {
                       <td></td>
                     </tr>
                     <tr>
-                      <td>Abril</td>
+                      <td className={styleCels}>Abril</td>
                       <td></td>
                       <td></td>
                       <td></td>
@@ -153,7 +153,7 @@ export const Pays = ({ estilos }) => {
                       <td></td>
                     </tr>
                     <tr>
-                      <td>Mayo</td>
+                      <td className={styleCels}>Mayo</td>
                       <td></td>
                       <td></td>
                       <td></td>
@@ -167,7 +167,7 @@ export const Pays = ({ estilos }) => {
                       <td></td>
                     </tr>
                     <tr>
-                      <td>Junio</td>
+                      <td className={styleCels}>Junio</td>
                       <td></td>
                       <td></td>
                       <td></td>
@@ -181,7 +181,7 @@ export const Pays = ({ estilos }) => {
                       <td></td>
                     </tr>
                     <tr>
-                      <td>Julio</td>
+                      <td className={styleCels}>Julio</td>
                       <td></td>
                       <td></td>
                       <td></td>
@@ -195,7 +195,7 @@ export const Pays = ({ estilos }) => {
                       <td></td>
                     </tr>
                     <tr>
-                      <td>Agosto</td>
+                      <td className={styleCels}>Agosto</td>
                       <td></td>
                       <td></td>
                       <td></td>
@@ -209,7 +209,7 @@ export const Pays = ({ estilos }) => {
                       <td></td>
                     </tr>
                     <tr>
-                      <td>Septiembre</td>
+                      <td className={styleCels}>Septiembre</td>
                       <td></td>
                       <td></td>
                       <td></td>
@@ -223,7 +223,7 @@ export const Pays = ({ estilos }) => {
                       <td></td>
                     </tr>
                     <tr>
-                      <td>Octubre</td>
+                      <td className={styleCels}>Octubre</td>
                       <td></td>
                       <td></td>
                       <td></td>
@@ -237,7 +237,7 @@ export const Pays = ({ estilos }) => {
                       <td></td>
                     </tr>
                     <tr>
-                      <td>Noviembre</td>
+                      <td className={styleCels}>Noviembre</td>
                       <td></td>
                       <td></td>
                       <td></td>
@@ -251,7 +251,7 @@ export const Pays = ({ estilos }) => {
                       <td></td>
                     </tr>
                     <tr>
-                      <td>Diciembre</td>
+                      <td className={styleCels}>Diciembre</td>
                       <td></td>
                       <td></td>
                       <td></td>

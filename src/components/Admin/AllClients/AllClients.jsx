@@ -21,7 +21,43 @@ import { BiEdit } from 'react-icons/Bi'
 import { ButtonNewClient } from '../Buttons/ButtonNewClient/ButtonNewClient'
 
 const AllClients = () => {
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState([
+    {
+      _id: '1',
+      Nombre: 'John',
+      Apellido: 'Doe',
+      Email: 'john@example.com',
+      profilePhotos: '',
+    },
+    {
+      _id: '2',
+      Nombre: 'Jane',
+      Apellido: 'Doe',
+      Email: 'jane@example.com',
+      profilePhotos: '',
+    },
+    {
+      _id: '3',
+      Nombre: 'Fulanito',
+      Apellido: 'Doe',
+      Email: 'fulanito@example.com',
+      profilePhotos: '',
+    },
+    {
+      _id: '4',
+      Nombre: 'Gastón',
+      Apellido: 'Doe',
+      Email: 'gaston@example.com',
+      profilePhotos: '',
+    },
+    {
+      _id: '5',
+      Nombre: 'Fernando',
+      Apellido: 'Doe',
+      Email: 'fernando@example.com',
+      profilePhotos: '',
+    },
+  ]);
   const [showUsers, setShowUsers] = useState(true);
   const [showFitMedical, setShowFitMedical] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
@@ -85,6 +121,9 @@ const AllClients = () => {
             <li className='pl-8'>Historial de pagos</li>
             <li className='pr-2'>Editar</li>
           </div>
+
+
+
           {showUsers ? (
             users.map((e) => (
               <div
@@ -94,7 +133,7 @@ const AllClients = () => {
                 <div className="flex justify-between m-auto items-center ml-2">
                   <img
                     className="w-24 h-24 rounded-full mr-2"
-                    src={profilePhotos[e._id] || noFoto}
+                    src={e.profilePhotos || noFoto}
                     alt="foto de perfil"
                   />
                   <div>

@@ -35,6 +35,9 @@ contraseña: recepcionista
 
 # 3- Una vez ingresado tendran la pantalla del "Home" con información y en el navegador de la web tendran distintas opciones con sus respectivas funciones para los administradores y recepcionistas, tanto como para ver los clientes, modificarlos, ver historial de pagos, apto medicos y hasta crear un cliente nuevo. \*1
 
-\*1 (SI EL SISTEMA NO FUNCIONA CON LOS USUARIOS PREDEFINIOS ES PORQUE SE NECESITA LA BASE DE DATOS MONGODB Y EL BACK-END PARA FUNCIONAR CORRECTAMENTE.)
+\*1 (SI EL SISTEMA NO FUNCIONA CON LOS USUARIOS PREDEFINIOS ES PORQUE SE NECESITA LA BASE DE DATOS MONGODB Y EL BACK-END PARA FUNCIONAR CORRECTAMENTE.
+
+Clonando el repositorio de github, en la terminal escribir "npm install" para instalar todas las dependencias y en la misma terminal escribir "nodemon app", se deberian leer los mensajes: "server conectado al puerto 8000" y "Conectado a la bd".
+)
 
 # 4- La web es muy intuitiva para poder hacer lo necesario sin problemas. Esto es para que el UX/UI (experiencia de usuario) sea mas cómoda y visualmente confortante.
