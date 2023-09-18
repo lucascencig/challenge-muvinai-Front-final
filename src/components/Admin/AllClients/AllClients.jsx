@@ -17,7 +17,7 @@ import noFoto from '../../../assets/no-foto.png'
 import '../../../index.css'
 
 // ICONS:
-import { TbReportMoney } from 'react-icons/Tb'
+import { BiMoneyWithdraw } from 'react-icons/Bi'
 import { BiEdit } from 'react-icons/Bi'
 import { ButtonNewClient } from '../Buttons/ButtonNewClient/ButtonNewClient'
 
@@ -215,7 +215,7 @@ const AllClients = () => {
                       </div>
                       <div className='mx-28'>
                         <Link to={`/clients/pays/${e._id}`}>
-                          <PaysButton text={<TbReportMoney />} user={e} />
+                          <PaysButton text={<BiMoneyWithdraw />} user={e} />
                         </Link>
                       </div>
                       <div className='mx-0 '>
