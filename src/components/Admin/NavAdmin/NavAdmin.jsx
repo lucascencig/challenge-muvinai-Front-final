@@ -9,7 +9,7 @@ import logo from '../../../assets/logo.png'
 import '../../../index.css'
 
 // ICONS:
-import { FaSearch } from 'react-icons/Fa'
+import { FaMagnifyingGlass } from 'react-icons/fa6'
 
 const NavAdmin = () => {
 
@@ -34,7 +34,7 @@ const NavAdmin = () => {
               </Link>
             </li>
           </ul>
-          <input type="text" className='mt-8 mx-4 w-64 h-10 pl-2 rounded-md focus:outline-[#5F8D4E]' placeholder='Buscar cliente...' /><button ><FaSearch className='w-10 h-10 p-2 mt-8 rounded-md -ml-2  text-[#fff] bg-[#5F8D4E]  hover:bg-[#4f7541] ease-in-out duration-100' /></button>
+          <input type="text" className='mt-8 mx-4 w-64 h-10 pl-2 rounded-md focus:outline-[#5F8D4E]' placeholder='Buscar cliente...' /><button ><FaMagnifyingGlass className='w-10 h-10 p-2 mt-8 rounded-md -ml-2  text-[#fff] bg-[#5F8D4E]  hover:bg-[#4f7541] ease-in-out duration-100' /></button>
         </div>
         <div className='flex float-right mt-4 mr-20 text-lg font-bold w-48 text-[#fff] flex-col'>
           {window.localStorage.getItem('adminEmail')}

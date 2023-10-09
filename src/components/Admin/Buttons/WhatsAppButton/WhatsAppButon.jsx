@@ -5,12 +5,12 @@ import classnames from 'classnames'
 import '../../../../index.css'
 
 // ICONS:
-import { IoLogoWhatsapp } from 'react-icons/Io'
+import { FaWhatsapp } from 'react-icons/fa6'
 
 const WhatsAppButon = ({ estilos }) => {
   const variants = {
     wsp: 'w-16 h-16 bg-[#00c307] rounded-full flex items-center justify-center shadow-md hover:bg-green-600 ease-in duration-100',
-    icon: 'text-white text-3xl',
+    icon: 'text-[#fff] rounded-full text-4xl bg-[#00c307] ',
   }
   const wspButton = classnames(variants['wsp'], estilos)
   const icon = classnames(variants['icon'], estilos)
@@ -18,7 +18,7 @@ const WhatsAppButon = ({ estilos }) => {
   return (
     <div>
       <button className={wspButton}>
-        <IoLogoWhatsapp className={icon} />
+        <FaWhatsapp className={icon} />
       </button>
     </div>
   )
