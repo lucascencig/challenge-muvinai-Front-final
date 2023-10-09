@@ -5,7 +5,7 @@ import classnames from 'classnames'
 import '../../../../index.css'
 
 // ICONS:
-import { FaEnvelope } from 'react-icons/Fa'
+import { FaEnvelope } from 'react-icons/fa6'
 
 const EmailButton = ({ estilos }) => {
   const variants = {

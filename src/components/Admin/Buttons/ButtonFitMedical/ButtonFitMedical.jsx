@@ -4,7 +4,8 @@ import React from 'react'
 import classnames from 'classnames'
 
 // ICONS:
-import { FaNotesMedical } from 'react-icons/Fa'
+import { FaNotesMedical } from 'react-icons/fa6'
+
 
 export const ButtonFitMedical = ({ user, estilos, onClick }) => {
   const variants = {

@@ -8,8 +8,7 @@ import NavFitMedical from '../NavFitMedical/NavFitMedical'
 // STYLES:
 import '../../../index.css'
 
-// ICONS:
-import { FaWindowClose } from 'react-icons/Fa'
+
 
 const FitMedical = ({ user }) => {
   const { id } = useParams();
@@ -40,7 +39,7 @@ const FitMedical = ({ user }) => {
             <div className='flex justify-center items-center w-full h-screen bg-[#000000b7] backdrop-blur-md  fixed top-24 left-0'>
               <div className="flex flex-col justify-center -mt-80 items-center rounded-md">
                 <div className=' float-right'>
-                  <button className='flex justify-center items-center font-bold ml-90 float-right' onClick={handleClose}><FaWindowClose className=' border-1 border-[#000] bg-[#ffffff0] w-10 h-10 p-2  rounded-md text-red-500 text-2xl mt-4 mb-2 flex justify-center items-center hover:text-red-700 hover:bg-[#ffffff40] hover:rounded-full ease-in-out duration-200' /></button>
+                  <button className='flex justify-center items-center font-bold ml-90 float-right' onClick={handleClose}><p className=' border-1 border-[#000] bg-[#ffffff0] w-10 h-10 p-2  rounded-md text-red-500 text-2xl mt-4 mb-2 flex justify-center items-center hover:text-red-700 hover:bg-[#ffffff40] hover:rounded-full ease-in-out duration-200'>X</p></button>
                 </div>
                 <div className="flex flex-col justify-center items-center md:flex-col gap-6 p-6 bg-white rounded-md  shadow-md">
                   <Link to={`/clients/apto-medico/${user.id}`}>

@@ -19,7 +19,8 @@ import '../../../index.css'
 
 // ICONS:
 
-import { FaRegEdit, FaDollarSign } from 'react-icons/Fa'
+import { FaPen, FaDollarSign } from 'react-icons/fa6'
+
 
 const AllClients = () => {
   const [users, setUsers] = useState([
@@ -220,7 +221,7 @@ const AllClients = () => {
                       </div>
                       <div className='mx-0 '>
                         <Link to={`/clients/${e._id}`}>
-                          <ButtonsUpdate text={<FaRegEdit />} user={e} />
+                          <ButtonsUpdate text={<FaPen />} user={e} />
                         </Link>
                       </div>
                     </div>
