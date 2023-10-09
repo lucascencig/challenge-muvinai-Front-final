@@ -5,13 +5,13 @@ import { Link } from 'react-router-dom'
 import '../../../../index.css'
 
 // ICONS:
-import { TbUsersPlus } from 'react-icons/Tb'
+import { FaUserAlt } from 'react-icons/Fa'
 
 export const ButtonNewClient = () => {
   return (
     <div >
       <Link to={'/new-client'}>
-        <button className='rounded-md bg-[#5F8D4E] w-56  h-12 text-center text-[#fff] flex justify-center items-center font-bold hover:bg-[#285430] ease-in-out duration-100'><TbUsersPlus className='mr-2 font-bold w-8' /> Nuevo cliente</button>
+        <button className='rounded-md bg-[#5F8D4E] w-56  h-12 text-center text-[#fff] flex justify-center items-center font-bold hover:bg-[#285430] ease-in-out duration-100'><FaUserAlt className='mr-2 font-bold w-8' /> Nuevo cliente</button>
       </Link>
     </div>
   )

@@ -5,7 +5,7 @@ import classnames from 'classnames'
 import '../../../../index.css'
 
 // ICONS:
-import { MdEmail } from 'react-icons/Md'
+import { FaEnvelope } from 'react-icons/Fa'
 
 const EmailButton = ({ estilos }) => {
   const variants = {
@@ -18,7 +18,7 @@ const EmailButton = ({ estilos }) => {
   return (
     <div>
       <button className={wspButton}>
-        <MdEmail className={icon} />
+        <FaEnvelope className={icon} />
       </button>
     </div>
   )

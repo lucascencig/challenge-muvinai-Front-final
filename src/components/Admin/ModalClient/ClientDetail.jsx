@@ -8,7 +8,7 @@ import EmailButton from '../Buttons/EmailButton/EmailButton';
 import noFoto from '../../../assets/no-foto.png';
 
 // ICONS:
-import { MdOutlineClose } from 'react-icons/Md'
+import { FaWindowClose } from 'react-icons/Fa'
 
 const ClientDetail = ({ user }) => {
   const [users, setUsers] = useState([
@@ -165,7 +165,7 @@ const ClientDetail = ({ user }) => {
             <div className='flex flex-col justify-center items-center text-justify p-4 '>
               <div className="flex flex-col   rounded-md">
                 <div className=' float-right'>
-                  <button className='flex justify-center items-center font-bold  float-right' onClick={handleClose}><MdOutlineClose className='border-1 border-[#000] bg-[#ffffff0] w-10 h-10 p-2  rounded-md text-red-500 text-2xl mt-4 mb-2 flex justify-center items-center hover:text-red-700 hover:bg-[#ffffff40] hover:rounded-full ease-in-out duration-200' /></button>
+                  <button className='flex justify-center items-center font-bold  float-right' onClick={handleClose}><FaWindowClose className='border-1 border-[#000] bg-[#ffffff0] w-10 h-10 p-2  rounded-md text-red-500 text-2xl mt-4 mb-2 flex justify-center items-center hover:text-red-700 hover:bg-[#ffffff40] hover:rounded-full ease-in-out duration-200' /></button>
                 </div>
                 <div className="flex flex-col md:flex-row gap-6 p-6 bg-white rounded-md  shadow-md">
                   <div className="md:w-2/5 mt-4 flex justify-center items-center">

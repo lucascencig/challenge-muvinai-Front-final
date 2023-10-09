@@ -4,7 +4,7 @@ import React from 'react'
 import classnames from 'classnames'
 
 // ICONS:
-import { HiOutlineInformationCircle } from 'react-icons/Hi'
+import { FaInfoCircle } from 'react-icons/Fa'
 
 const ButtonDetails = ({ user, estilos, onClick }) => {
   const variants = {
@@ -15,7 +15,7 @@ const ButtonDetails = ({ user, estilos, onClick }) => {
 
   return (
     <div className={styleDiv}>
-      <button className={stylesButton} user={user} onClick={onClick}><HiOutlineInformationCircle /></button>
+      <button className={stylesButton} user={user} onClick={onClick}><FaInfoCircle /></button>
     </div>
   )
 }

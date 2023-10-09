@@ -11,15 +11,15 @@ import PaysButton from '../Buttons/ButtonsCrud/PaysButton/PaysButton'
 import ClientDetail from '../ModalClient/ClientDetail'
 import ButtonDetails from '../Buttons/ButtonDetails/ButtonDetails'
 import Pagination from '../Pagination/Pagination'
+import { ButtonNewClient } from '../Buttons/ButtonNewClient/ButtonNewClient'
 
 // STYLES: 
 import noFoto from '../../../assets/no-foto.png'
 import '../../../index.css'
 
 // ICONS:
-import { BsCurrencyDollar } from 'react-icons/Bs'
-import { FaRegEdit } from 'react-icons/Fa'
-import { ButtonNewClient } from '../Buttons/ButtonNewClient/ButtonNewClient'
+
+import { FaRegEdit, FaDollarSign } from 'react-icons/Fa'
 
 const AllClients = () => {
   const [users, setUsers] = useState([
@@ -215,7 +215,7 @@ const AllClients = () => {
                       </div>
                       <div className='mx-28'>
                         <Link to={`/clients/pays/${e._id}`}>
-                          <PaysButton text={<BsCurrencyDollar />} user={e} />
+                          <PaysButton text={<FaDollarSign />} user={e} />
                         </Link>
                       </div>
                       <div className='mx-0 '>

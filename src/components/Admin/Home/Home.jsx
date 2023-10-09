@@ -7,12 +7,7 @@ import foto from '../../../assets/fotogym.jpg'
 import '../../../index.css'
 
 // ICONS:
-import { CgGym } from 'react-icons/Cg'
-import { GiLeg } from 'react-icons/Gi'
-import { RiBodyScanFill } from 'react-icons/Ri'
-import { AiOutlineInstagram } from 'react-icons/Ai'
-import { BiLogoFacebookSquare, BiLogoTelegram } from 'react-icons/Bi'
-import { BsTwitter } from 'react-icons/Bs'
+import { FaWeightHanging, FaPeopleArrows, FaTachometerAlt, FaInstagram, FaFacebookSquare, FaTelegramPlane, FaTwitter } from 'react-icons/Fa'
 
 const Home = () => {
   return (
@@ -54,18 +49,18 @@ const Home = () => {
         </div>
         <div className='flex justify-around items-center m-auto mt-10 -gap-8'>
           <div className='w-80 border-2 border-[#285430] p-4 rounded-md'>
-            <CgGym className='w-12 h-12 mb-2 bg-[#285430] text-[#fff] p-2 rounded-md' />
-            <h2 className='text-2xl font-bold mb-2'>Ejercicios de pecho</h2>
+            <FaWeightHanging className='w-12 h-12 mb-2 bg-[#285430] text-[#fff] p-2 rounded-md' />
+            <h2 className='text-2xl font-bold mb-2'>Ejercicios de peso</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus cupiditate reprehenderit nesciunt eligendi id optio architecto libero, quibusdam adipisci voluptas est doloremque error. Illo consequatur vel voluptate ducimus neque? Iusto!</p>
           </div>
           <div className='w-80 border-2 border-[#285430] bg-[#285430] text-[#fff] p-4 rounded-md'>
-            <GiLeg className='w-12 h-12 mb-2 bg-[#fff] p-2 rounded-md text-[#285430]' />
-            <h2 className='text-2xl font-bold mb-2'>Ejercicios de pecho</h2>
+            <FaPeopleArrows className='w-12 h-12 mb-2 bg-[#fff] p-2 rounded-md text-[#285430]' />
+            <h2 className='text-2xl font-bold mb-2'>Ejercicios en equipo</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus cupiditate reprehenderit nesciunt eligendi id optio architecto libero, quibusdam adipisci voluptas est doloremque error. Illo consequatur vel voluptate ducimus neque? Iusto!</p>
           </div>
           <div className='w-80 border-2 border-[#285430] p-4 rounded-md'>
-            <RiBodyScanFill className='w-12 h-12 mb-2 bg-[#285430] text-[#fff] p-2 rounded-md' />
-            <h2 className='text-2xl font-bold mb-2'>Ejercicios de pecho</h2>
+            <FaTachometerAlt className='w-12 h-12 mb-2 bg-[#285430] text-[#fff] p-2 rounded-md' />
+            <h2 className='text-2xl font-bold mb-2'>Resultados a tiempo</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus cupiditate reprehenderit nesciunt eligendi id optio architecto libero, quibusdam adipisci voluptas est doloremque error. Illo consequatur vel voluptate ducimus neque? Iusto!</p>
           </div>
         </div>
@@ -96,10 +91,10 @@ const Home = () => {
           <div>
             <h2 className='text-3xl -mt-20 text-[#fff]'>Redes</h2>
             <ul className='flex p-2 mt-4 border-2 border-[#5F8D4E] bg-[#5F8D4E] rounded-lg'>
-              <li className='w-12 h-12 text-4xl  text-[#fff] flex items-center justify-center rounded-md hover:text-[#bb5ebd]'><a href=""><AiOutlineInstagram /></a> </li>
-              <li className='w-12 h-12 text-4xl pl-4 text-[#fff] flex items-center justify-center rounded-md hover:text-[#1616dd]'><a href=""><BiLogoFacebookSquare /></a> </li>
-              <li className='w-12 h-12 text-4xl pl-4 text-[#fff] flex items-center justify-center rounded-md hover:text-[#16a4e0]'><a href=""><BiLogoTelegram /></a> </li>
-              <li className='w-12 h-12 text-4xl pl-4 text-[#fff] flex items-center justify-center rounded-md hover:text-[#16a4e0]'><a href=""><BsTwitter /></a> </li>
+              <li className='w-12 h-12 text-4xl  text-[#fff] flex items-center justify-center rounded-md hover:text-[#bb5ebd]'><a href=""><FaInstagram /></a> </li>
+              <li className='w-12 h-12 text-4xl pl-4 text-[#fff] flex items-center justify-center rounded-md hover:text-[#1616dd]'><a href=""><FaFacebookSquare /></a> </li>
+              <li className='w-12 h-12 text-4xl pl-4 text-[#fff] flex items-center justify-center rounded-md hover:text-[#16a4e0]'><a href=""><FaTelegramPlane /></a> </li>
+              <li className='w-12 h-12 text-4xl pl-4 text-[#fff] flex items-center justify-center rounded-md hover:text-[#16a4e0]'><a href=""><FaTwitter /></a> </li>
             </ul>
           </div>
         </div >

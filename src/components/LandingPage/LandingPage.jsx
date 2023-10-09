@@ -56,9 +56,9 @@ const LandingPage = () => {
           <form className={s.form}>
             <div className={s.header}>Ingresar</div>
             <div className={s.inputs}>
-              <input placeholder="Email" value={email}
+              <input placeholder="Email: admin@admin.com" value={email}
                 onChange={(e) => setEmail(e.target.value)} className={s.input} type="text" />
-              <input placeholder="Contraseña" value={password}
+              <input placeholder="Contraseña: admin" value={password}
                 onChange={(e) => setPassword(e.target.value)} className={s.input} type="password" />
               <div className={s.checkbox_container}>
                 <label className={s.checkbox}>
